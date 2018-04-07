@@ -1,0 +1,25 @@
+{
+  "name": "spa-store",
+  "version": "1.0.0",
+  "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^1.0.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/React-BP/SPA-store.git"
+  },
+  "author": "Daniel Ward, Mateo Vargas, Gena Reidler, Matt Groe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/React-BP/SPA-store/issues"
+  },
+  "homepage": "https://github.com/React-BP/SPA-store#readme"
+}
