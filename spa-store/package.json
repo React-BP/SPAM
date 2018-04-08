@@ -4,13 +4,29 @@
   "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.18.0",
     "bcrypt": "^1.0.3",
-    "express": "^4.16.3"
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.13",
+    "nodemon": "^1.17.3",
+    "path": "^0.12.7",
+    "react-router-dom": "^4.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "seed": "node scripts/seedDB.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "installDeps": "yarn && cd client && yarn"
   },
   "repository": {
     "type": "git",

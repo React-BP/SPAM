@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD:spa-store/client/package.json
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-scripts": "1.1.4"
-=======
     "async": "^2.6.0",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
@@ -19,7 +14,6 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "sweet-alert": "^1.0.1"
->>>>>>> b7fcb840c720b390f04cae269153a987b190fb91:spam/package.json
   },
   "scripts": {
     "start": "react-scripts start",
