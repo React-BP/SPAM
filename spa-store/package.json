@@ -6,7 +6,6 @@
   "dependencies": {
     "async": "^2.6.0",
     "axios": "^0.18.0",
-    "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
@@ -17,7 +16,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.17.3"
   },
   "scripts": {
     "server": "node server.js",
