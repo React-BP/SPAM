@@ -11,10 +11,11 @@ class Registration extends Component {
    render() {
       let form = (
          <form>
-            <Input inputtype='register' type='text' name='name' placeholder='Full Name'/>
+            <Input inputtype='register' type='text' name='name' placeholder='Full Name' />
             <Input inputtype='register' type ='email' name='email' placeholder='Email' />
+            <Input inputtype='register' type='username' name='username' placeholder='username' />
             <Input inputtype='register' type='password' name='password' placeholder='password'/>
-            <Input inputtype='register' type='username' name='username' placeholder='username'/>
+            
          </form>
       )
       return (
