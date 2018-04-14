@@ -1,0 +1,43 @@
+.wrapper{
+
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   grid-gap: 5px;
+
+}
+
+.nav{
+    grid-column: 1;
+    grid-template-columns: repeat(10, 1fr);
+    display: grid;
+}
+
+.btn-one{
+    grid-column: 1;
+}
+
+.btn-two{
+    grid-column: 2;
+}
+
+.btn-three{
+    grid-column: 3;
+}
+
+.btn-four{
+    grid-column: 4;
+}
+
+.btn-five{
+    grid-column: 5;
+}
+
+.btn-six{
+    grid-column: 8;
+
+}
+
+.btn-seven{
+    grid-column: 9 / 11;
+    
+}
