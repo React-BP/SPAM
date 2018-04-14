@@ -1,29 +1,41 @@
-import React from "react";
-import { Link, Route } from "react-router-dom";
-import Accessories from "../Accessories/Accessories";
+import React, { Component } from "react";
+import Results from "./Results";
+import Filter from "../../UI/Filter/Filter";
+import API from "../../../utils/API";
 
-const Clothing = props => (
-    <div>
-        <h1>Contact Page</h1>
-        <p>
-            Integer cursus bibendum sem non pretium. Vestibulum in aliquet sem, quis molestie urna.
-            Aliquam semper ultrices varius. Aliquam faucibus sit amet magna a ultrices. Aenean
-            pellentesque placerat lacus imperdiet efficitur. In felis nisl, luctus non ante euismod,
-            tincidunt bibendum mi. In a molestie nisl, eu sodales diam. Nam tincidunt lacus quis magna
-            posuere, eget tristique dui dapibus. Maecenas fermentum elementum faucibus. Quisque nec metus
-            vestibulum, egestas massa eu, sollicitudin ipsum. Nulla facilisi. Sed ut erat ligula. Nam
-            tincidunt nunc in nibh dictum ullamcorper. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Etiam ornare rutrum felis at rhoncus. Etiam vel
-            condimentum magna, quis tempor nulla.
-    </p>
-        <Link to={`/accessories`} className="btn btn-default">
-            Learn More
-    </Link>{" "}
-        <Link to="/" className="btn btn-default">
-            Learn Less
-    </Link>
-        <Route exact path={`/accessories`} component={Accessories} />
-    </div>
-);
+class Clothing extends Component {
+    state = {
+        search: "",
+        results: []
+    };
+
+    // When this component mounts, search the Giphy API for pictures of kittens
+    componentDidMount() {
+        //this.searchGiphy("surfers");
+    }
+
+    /**searchGiphy = query => {
+        API.search(query)
+            .then(res => this.setState({ results: res.data.data }))
+            .catch(err => console.log(err));
+    };**/
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    render() {
+        return (
+            <div className="content-container">
+                <Filter />
+                <Results results={this.state.results} />
+            </div>
+        );
+    }
+}
 
 export default Clothing;

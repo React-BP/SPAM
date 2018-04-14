@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Results from "./Results";
-//import API from "../utils/API";
+import Filter from "../../UI/Filter/Filter";
+import API from "../../../utils/API";
 
 class Wetsuits extends Component {
     state = {
@@ -29,7 +30,8 @@ class Wetsuits extends Component {
 
     render() {
         return (
-            <div>
+            <div className="content-container">
+                <Filter />
                 <Results results={this.state.results} />
             </div>
         );

@@ -3,10 +3,11 @@
    display: grid;
    grid-template-columns: repeat(1, 1fr);
    grid-gap: 5px;
-
+   background-color: #EAE7DC;
 }
 
 .nav{
+
     grid-column: 1;
     grid-template-columns: repeat(10, 1fr);
     display: grid;
@@ -33,11 +34,26 @@
 }
 
 .btn-six{
-    grid-column: 8;
+    grid-column: 7;
 
 }
 
 .btn-seven{
-    grid-column: 9 / 11;
-    
+    grid-column: 8 / 9;
+}
+
+.btn-eight{
+    grid-column: 10 / 11;
+}
+
+.active{
+    border-bottom: 2px #E85A4F solid !important;
+}
+
+.navLink{
+    color: #E85A4F !important;
+}
+
+.navLink:hover{
+   background-color: #D8C3A5 !important;
 }

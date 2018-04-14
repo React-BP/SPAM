@@ -7,6 +7,7 @@ import Wetsuits from "../../Components/Pages/Wetsuits/Wetsuits";
 import Boards from "../../Components/Pages/Boards/Boards";
 import Clothing from "../../Components/Pages/Clothing/Clothing";
 import Accessories from "../../Components/Pages/Accessories/Accessories";
+import Footer from "../../Components/UI/Footer/Footer";
 
 const App = () => (
   <Router>
@@ -22,6 +23,7 @@ const App = () => (
         <Route exact path="/logout" />
         <Route exact path="/signup" />
       </Switch>
+      <Footer />
     </div>
   </Router>
 );

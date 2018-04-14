@@ -1,14 +1,41 @@
-import React from "react";
+import React, { Component } from "react";
+import Results from "./Results";
+import Filter from "../../UI/Filter/Filter";
+import API from "../../../utils/API";
 
-const Accessories= () => (
-    <div>
-        <h1 className="text-center">hello</h1>
-        <p>
-            Lorem ipsum dolor sit amet, est ut enim consequat. Nostrum fastidii partiendo sed ne, no mutat
-            ludus aperiri mea, per in choro dolorem electram. Invidunt reprimique assueverit quo ne,
-            eruditi graecis pro ut. Usu ut diceret scaevola evertitur, appareat voluptatibus ad vel.
-    </p>
-    </div>
-);
+class Accessories extends Component {
+    state = {
+        search: "",
+        results: []
+    };
+
+    // When this component mounts, search the Giphy API for pictures of kittens
+    componentDidMount() {
+        //this.searchGiphy("surfers");
+    }
+
+    /**searchGiphy = query => {
+        API.search(query)
+            .then(res => this.setState({ results: res.data.data }))
+            .catch(err => console.log(err));
+    };**/
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    render() {
+        return (
+            <div className="content-container">
+                <Filter />
+                <Results results={this.state.results} />
+            </div>
+        );
+    }
+}
 
 export default Accessories;

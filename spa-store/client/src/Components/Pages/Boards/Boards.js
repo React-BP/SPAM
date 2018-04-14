@@ -1,21 +1,41 @@
-import React from "react";
+import React, { Component } from "react";
+import Results from "./Results";
+import Filter from "../../UI/Filter/Filter";
+import API from "../../../utils/API";
 
-const Boards = () => (
-    <div>
-        <h1>Blog Page</h1>
-        <p>
-            Donec a volutpat quam. Curabitur nec varius justo, sed rutrum ligula. Curabitur pellentesque
-            turpis sit amet eros iaculis, a mollis arcu dictum. Ut vel ante eget massa ornare placerat.
-            Etiam nisl orci, finibus sodales volutpat et, hendrerit ut dolor. Suspendisse porta dictum
-            nunc, sed pretium risus rutrum eget. Nam consequat, ligula in faucibus vestibulum, nisi justo
-            laoreet risus, luctus luctus mi lacus sit amet libero. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Mauris pretium condimentum tellus eget
-            lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec placerat
-            accumsan mi, ut congue neque placerat eu. Donec nec ipsum in velit pellentesque vehicula sit
-            amet at augue. Maecenas aliquam bibendum congue. Pellentesque semper, lectus non ullamcorper
-            iaculis, est ligula suscipit velit, sed bibendum turpis dui in sapien.
-    </p>
-    </div>
-);
+class Boards extends Component {
+    state = {
+        search: "",
+        results: []
+    };
+
+    // When this component mounts, search the Giphy API for pictures of kittens
+    componentDidMount() {
+        //this.searchGiphy("surfers");
+    }
+
+    /**searchGiphy = query => {
+        API.search(query)
+            .then(res => this.setState({ results: res.data.data }))
+            .catch(err => console.log(err));
+    };**/
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    render() {
+        return (
+            <div className="content-container">
+                <Filter />
+                <Results results={this.state.results} />
+            </div>
+        );
+    }
+}
 
 export default Boards;
