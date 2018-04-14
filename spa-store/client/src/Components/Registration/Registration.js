@@ -1,65 +1,176 @@
 import React, { Component } from 'react';
 import Input from '../UI/Input/Input';
+import Button from '../UI/Button/button';
 import classes from './registration.css';
 import logoImg from "../../assets/Images/reactBP.png";
+// import axios from 'axios';
 class Registration extends Component {
-   state={
-      name: '',
-      email: '',
-      password: '',
-      username: ''
-   }
-   render() {
-       var style = {
-           image: {
-               width: 125,
-               height: 100,               
-           }
-       }
-      let form = (
-         <form>
-             <div className={classes.LogoModal}>
-                 <i><img src={logoImg} style={style.image} alt='logo' /></i>
-             </div>
-             <span className={classes.TitleModal}>Sign Up</span>
-             <div>
-                 <h1>Google sign in box</h1>
-             </div>
-              <div className='Or'>
-                  <h2><span>Or</span></h2>
-              </div>
-              <Input inputtype='register'
-                     type='text' 
-                     name='name' 
-                     label='Full Name'
-                     placeholder='Full Name' />
-              <Input inputtype='register' 
-                    //  icon='fas fa-envelope' 
-                     label='Email' 
-                     type ='email' 
-                     name='email' 
-                     placeholder='Email' />
-            <Input inputtype='register' 
-                    //  icon='fas fa-user' 
-                     label='Username' 
-                     type='username' 
-                     name='username' 
-                      placeholder='username' />
-              <Input inputtype='register' 
-                    //  icon='fas fa-lock' 
-                     label='Password' 
-                     type='password' 
-                     name='password' 
-                     placeholder='password'/>
-                    
-         </form>
-      )
-      return (
-         <div className={classes.RegBox}>
-            {form}
-         </div>
-      );
-   }
-}
 
+    state = {
+        regInput: {
+            name: {
+                elementtype: 'register',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Full Name',
+                },
+                value: '',
+                label: 'Full Name',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
+            email: {
+                elementtype: 'register',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your E-Mail'
+                },
+                value: '',
+                label: 'Email',
+                icon: 'fas fa-envelope',
+                validation:{
+                    required: true,
+                    // regeExEmail: /^\S+@\S+\.\S+$/
+                },
+                valid: false,
+                touched: false
+            },
+            password: {
+                elementtype: 'register',
+                elementConfig: {
+                    type: 'password',
+                    placeholder: 'Your Password',                   
+                },
+                value: '',
+                label: 'Password',
+                icon: 'fas fa-lock',
+                validation: {
+                    required: true,
+                    regexpass: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+                },
+                valid: false,
+                touched: false
+            },
+            username: {
+                elementtype: 'register',
+                elementConfig: {
+                    type: 'username',
+                    placeholder: 'Your Username'
+                },
+                value: '',
+                label: 'Username',
+                icon: 'fas fa-user',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            }
+        },
+        formIsValid: false
+    }
+    registrationHandler = (event) => {
+        event.preventDefault();
+        const formData = {};
+        for(let formElementIdentifier in this.state.regInput){
+            formData[formElementIdentifier] = this.state.regInput[formElementIdentifier].value;
+        }
+        console.log(formData);
+        
+
+        // axios.post('/register', user).then(response =>{
+
+        // }).catch( error =>{
+
+        // }).fail((errorThrown) =>{
+
+        // })
+    }
+
+    checkValidity = (value,rules) => {
+        let isValid = true;
+        if(rules.required){            
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        return isValid;
+    }
+    handleInputChange = (event, inputIndentifier) => {       
+        const updatedRegInput = {
+            ...this.state.regInput
+        }
+        const updatedRegElement = {
+            ...updatedRegInput[inputIndentifier]
+        }
+        updatedRegElement.value = event.target.value;
+        updatedRegElement.valid = this.checkValidity(updatedRegElement.value, updatedRegElement.validation);
+        updatedRegElement.touched = true;
+        updatedRegInput[inputIndentifier] = updatedRegElement;
+        console.log(updatedRegElement);
+
+        let formIsValid = true;
+        for(let inputIndentifier in updatedRegInput){
+            formIsValid = updatedRegInput[inputIndentifier].valid && formIsValid;
+        }
+        console.log(formIsValid);
+        this.setState({
+            regInput: updatedRegInput, formIsValid: formIsValid
+        });
+    };
+
+    render() {
+        const formElementsArr = [];
+        for (let key in this.state.regInput) {
+            formElementsArr.push({
+                id: key,
+                config: this.state.regInput[key]
+            })
+        }
+        // console.log(formElementsArr);
+
+        var style = {
+            image: {
+                width: 125,
+                height: 100,
+            }
+        }
+        let form = (
+            <form onSubmit={this.registrationHandler}>
+                <div className={classes.LogoModal}>
+                    <i><img src={logoImg} style={style.image} alt='logo' /></i>
+                </div>
+                <span className={classes.TitleModal}>Sign Up</span>
+                <div>
+                    <h1>Google sign in box</h1>
+                </div>
+                <div className='Or'>
+                    <h2><span>Or</span></h2>
+                </div>
+                {formElementsArr.map(formEl => {
+                    return (
+                        <Input key={formEl.id}
+                            elementType={formEl.config.elementtype}
+                            elementConfig={formEl.config.elementConfig}
+                            value={formEl.config.value}
+                            label={formEl.config.label}
+                            icon={formEl.config.icon}
+                            invalid={!formEl.config.valid}
+                            touched={formEl.config.touch}
+                            change={(event) => this.handleInputChange(event, formEl.id)}
+                        />
+                    )
+                })}              
+                <Button btnType='Success' disabled={!this.state.formIsValid}>Create Account</Button>
+            </form>
+        )
+        return (
+            <div className={classes.RegBox}>
+                {form}
+            </div>
+        );
+    }
+}
 export default Registration;
