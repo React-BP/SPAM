@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Input.css';
+import './Input.css';
 
 
 const input = (props) => {
@@ -7,30 +8,37 @@ const input = (props) => {
       let inputEl = null;
       let inputClasses = [classes.InputEl];
 
-      if(props.invalid && props.touched){
+      if (props.invalid && props.touched) {
             inputClasses.push(classes.Invalid)
       }
 
       switch (props.elementType) {
             case ('login'):
-                  inputEl = <input className={inputClasses.join(' ')} {...props.elementConfig} value={props.value} />
+                  inputEl = (  <div className={classes.InputDiv}>
+                                    <span className={props.icon}></span>
+                                     <input className={inputClasses.join(' ')} {...props.elementConfig}
+                                            value={props.value}
+                                            onChange={props.change}
+                                    />
+                              </div>
+                  )
                   break;
             case ('register'):
                   inputEl = (
                         <div>
                               <div className={classes.InputDiv}>
                                     <span className={props.icon}></span>
-                                    <input className={inputClasses.join(' ')} {...props.elementConfig} 
-                                    value={props.value} 
-                                    onChange={props.change}
+                                    <input className={inputClasses.join(' ')} {...props.elementConfig}
+                                          value={props.value}
+                                          onChange={props.change}
                                     />
                               </div>
                         </div>
                   )
                   break;
             default:
-                  inputEl = <input className={inputClasses.join(' ')} {...props.elementConfig} 
-                  value={props.value} />
+                  inputEl = <input className={inputClasses.join(' ')} {...props.elementConfig}
+                        value={props.value} />
       }
 
       return (

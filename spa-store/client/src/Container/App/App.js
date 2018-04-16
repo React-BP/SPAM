@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import './App.css';
-import Registration from '../../Components/Registration/Registration';
+// import Registration from '../../Components/Registration/Registration';
+import Login from "../../Components/Login/login";
 import Modal from '../../Components/UI/Modal/modal';
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
       <Modal show={this.state.purchasing} modalClosed=    {this.purchaseCancelHandler}>
-          <Registration />
+          <Login />
       </Modal>
         
       </div>

@@ -7,7 +7,7 @@
    box-shadow: 2px 2px 2px black;
    padding: 16px;
    left: 15%;
-   top: 15%;
+   top: 5%;
    box-sizing: border-box;
    transition: all 0.3s ease-out;
 }
@@ -18,3 +18,4 @@
       left: calc(50%-250px);
    }
 } */
+

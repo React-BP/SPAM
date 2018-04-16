@@ -3,7 +3,8 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/button';
 import classes from './registration.css';
 import logoImg from "../../assets/Images/reactBP.png";
-// import axios from 'axios';
+// import swal from 'sweet-alert'
+import axios from 'axios';
 class Registration extends Component {
 
     state = {
@@ -31,7 +32,7 @@ class Registration extends Component {
                 value: '',
                 label: 'Email',
                 icon: 'fas fa-envelope',
-                validation:{
+                validation: {
                     required: true,
                     // regeExEmail: /^\S+@\S+\.\S+$/
                 },
@@ -42,7 +43,7 @@ class Registration extends Component {
                 elementtype: 'register',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Your Password',                   
+                    placeholder: 'Your Password',
                 },
                 value: '',
                 label: 'Password',
@@ -75,30 +76,29 @@ class Registration extends Component {
     registrationHandler = (event) => {
         event.preventDefault();
         const formData = {};
-        for(let formElementIdentifier in this.state.regInput){
+        for (let formElementIdentifier in this.state.regInput) {
             formData[formElementIdentifier] = this.state.regInput[formElementIdentifier].value;
         }
         console.log(formData);
-        
 
-        // axios.post('/register', user).then(response =>{
+        axios.post('/api/register', formData).then(response =>{
+            console.log(response);
+            // swal("Thank you for registering with React BP. Please Login.");
 
-        // }).catch( error =>{
-
-        // }).fail((errorThrown) =>{
-
-        // })
+        }).catch( error =>{
+           console.log(error.response);
+        });
     }
 
-    checkValidity = (value,rules) => {
+    checkValidity = (value, rules) => {
         let isValid = true;
-        if(rules.required){            
+        if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
 
         return isValid;
     }
-    handleInputChange = (event, inputIndentifier) => {       
+    handleInputChange = (event, inputIndentifier) => {
         const updatedRegInput = {
             ...this.state.regInput
         }
@@ -109,10 +109,10 @@ class Registration extends Component {
         updatedRegElement.valid = this.checkValidity(updatedRegElement.value, updatedRegElement.validation);
         updatedRegElement.touched = true;
         updatedRegInput[inputIndentifier] = updatedRegElement;
-        console.log(updatedRegElement);
+        // console.log(updatedRegElement);
 
         let formIsValid = true;
-        for(let inputIndentifier in updatedRegInput){
+        for (let inputIndentifier in updatedRegInput) {
             formIsValid = updatedRegInput[inputIndentifier].valid && formIsValid;
         }
         console.log(formIsValid);
@@ -162,12 +162,12 @@ class Registration extends Component {
                             change={(event) => this.handleInputChange(event, formEl.id)}
                         />
                     )
-                })}              
+                })}
                 <Button btnType='Success' disabled={!this.state.formIsValid}>Create Account</Button>
             </form>
         )
         return (
-            <div className={classes.RegBox}>
+            <div >
                 {form}
             </div>
         );
