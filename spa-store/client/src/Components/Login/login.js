@@ -5,6 +5,7 @@ import logoImg from "../../assets/Images/reactBP.png";
 import googleImg from '../../assets/Images/googleSignIn.png';
 import classes from "./login.css";
 import axios from 'axios';
+import swal from 'sweet-alert';
 
 class login extends Component {
 
@@ -13,7 +14,7 @@ class login extends Component {
          username: {
             elementtype: 'login',
             elementConfig: {
-               type: 'username',
+               type: 'text',
                placeholder: 'Your Username'
             },
             value: '',
@@ -55,7 +56,7 @@ class login extends Component {
 
       axios.post('/api/login', formData).then(response => {
          console.log(response);
-         // swal("Thank you for registering with React BP. Please Login.");
+          swal("Thank you for registering with React BP. Please Login.");
 
       }).catch(error => {
          console.log(error.response);
@@ -71,25 +72,26 @@ class login extends Component {
       return isValid;
    }
    loginInputChange = (event, inputIndentifier) => {
-      const updatedRegInput = {
+      const updateUserInput = {
          ...this.state.userInput
       }
-      const updatedRegElement = {
-         ...updatedRegInput[inputIndentifier]
+      const updatedUserElement = {
+         ...updateUserInput[inputIndentifier]
       }
-      updatedRegElement.value = event.target.value;
-      updatedRegElement.valid = this.checkValidity(updatedRegElement.value, updatedRegElement.validation);
-      updatedRegElement.touched = true;
-      updatedRegInput[inputIndentifier] = updatedRegElement;
-      // console.log(updatedRegElement);
+      updatedUserElement.value = event.target.value;
+      updatedUserElement.valid = this.checkValidity(updatedUserElement.value, updatedUserElement.validation);
+      updatedUserElement.touched = true;
+      updateUserInput[inputIndentifier] = updatedUserElement;
+   //   console.log(updatedUserElement);
 
       let formIsValid = true;
-      for (let inputIndentifier in updatedRegInput) {
-         formIsValid = updatedRegInput[inputIndentifier].valid && formIsValid;
+      for (let inputIndentifier in updateUserInput) {
+         formIsValid = updateUserInput[inputIndentifier].valid && formIsValid;
       }
       console.log(formIsValid);
       this.setState({
-         regInput: updatedRegInput, formIsValid: formIsValid
+         userInput: updateUserInput,
+         formIsValid: formIsValid
       });
    };
 
@@ -114,8 +116,8 @@ class login extends Component {
                <i><img src={logoImg} style={style.image} alt='logo' /></i>
             </div>
             <span className={classes.TitleModal}>Sign Up</span>
-            <div>
-               <img onClick={this.googleSignIn} className={classes.googleBtn} src={googleImg} alt="Google Sign In Btn" />
+            <div className={classes.googleBtn}>
+               <img src={googleImg} alt="Google Sign In Btn" />
             </div>
             <div className='Or'>
                <h2><span>Or</span></h2>
@@ -134,7 +136,7 @@ class login extends Component {
                   />
                )
             })}
-            <Button btnType='Success' disabled={!this.state.formIsValid}>Create Account</Button>
+            <Button btnType='Success' clicked={this.loginHandler} disabled={!this.state.formIsValid}>Create Account</Button>
          </form>
       )
       return (

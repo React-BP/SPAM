@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
+const jwt = require('jsonwebtoken');
 
 const newUser = require('../models/users');
 
@@ -46,5 +47,73 @@ router.post('/api/register', (req,res)=>{
       }
    });
 });
+
+
+router.post('/api/login', (req,res) =>{
+   let name = req.body.username;
+   console.log(name);
+   
+   newUser.findOne({username: name}).exec().then(user =>{
+      console.log(user);
+      if (user == null) {
+         console.log("User does not exist");
+      }
+      if (user.length < 1) {
+         console.log("User is Invalid");
+
+         return res.status(401).json({
+            message: 'Auth Failed'
+         });
+      }
+      console.log(req.body.password);
+      console.log(user.password);
+      bcrypt.compare(req.body.password, user.password, (err, result) =>{
+         if (err) {
+            return res.status(401).json({
+               message: 'Auth failed'
+            });
+         }
+         // if (result) {
+         //    const token = jwt.sign({
+         //       email: user.email,
+         //       manID: user.manager_U_id,
+         //       uID: user.user_U_id,
+         //       type: user.type,
+         //       username: user.username
+         //    }, process.env.JWT_Key,
+         //       //define the options
+         //       {
+         //          expiresIn: "4h"
+         //       }
+         //    );
+         //    console.log("token created");
+         //    return res.status(200).json({
+         //       message: 'Auth successful',
+         //       token: token,
+         //       authTok: user.manager_U_id,
+         //       userType: user.type,
+         //       userId: user.user_U_id
+         //    });
+         //    // window.location('/home');
+         // }
+
+      });
+   }).catch(err => {
+      catchError(err);
+   });
+});
+
+//Route to logout.
+router.post('/logout', function (req, res) {
+   res.json({});
+});
+
+function catchError(err) {
+   console.log(err);
+   res.status(500).json({
+      error: err
+   });
+}
+
 
 module.exports = router;
