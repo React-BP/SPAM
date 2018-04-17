@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/button';
 import logoImg from "../../assets/Images/reactBP.png";
-import classes from "../Registration/registration.css";
+import googleImg from '../../assets/Images/googleSignIn.png';
+import classes from "./login.css";
 import axios from 'axios';
 
 class login extends Component {
@@ -39,9 +40,7 @@ class login extends Component {
             },
             valid: false,
             touched: false
-         },
-         valid: false,
-         touched: false
+         }
       },
       formIsValid: false
    }
@@ -71,41 +70,38 @@ class login extends Component {
 
       return isValid;
    }
-
-   handleInputChange = (event, inputIndentifier) => {
-      const updatedUserInput = {
+   loginInputChange = (event, inputIndentifier) => {
+      const updatedRegInput = {
          ...this.state.userInput
       }
-      const updatedUserElement = {
-         ...updatedUserInput[inputIndentifier]
+      const updatedRegElement = {
+         ...updatedRegInput[inputIndentifier]
       }
-      updatedUserElement.value = event.target.value;
-      updatedUserElement.valid = this.checkValidity(updatedUserElement.value, updatedUserElement.validation);
-      updatedUserElement.touched = true;
-      updatedUserInput[inputIndentifier] = updatedUserElement;
-       console.log(updatedUserElement);
+      updatedRegElement.value = event.target.value;
+      updatedRegElement.valid = this.checkValidity(updatedRegElement.value, updatedRegElement.validation);
+      updatedRegElement.touched = true;
+      updatedRegInput[inputIndentifier] = updatedRegElement;
+      // console.log(updatedRegElement);
 
       let formIsValid = true;
-      for (let inputIndentifier in updatedUserInput) {
-         formIsValid = updatedUserInput[inputIndentifier].valid && formIsValid;
+      for (let inputIndentifier in updatedRegInput) {
+         formIsValid = updatedRegInput[inputIndentifier].valid && formIsValid;
       }
       console.log(formIsValid);
       this.setState({
-         regInput: updatedUserInput, formIsValid: formIsValid
+         regInput: updatedRegInput, formIsValid: formIsValid
       });
    };
 
-
    render() {
-      const formElArr = [];
+      const formElementsArr = [];
       for (let key in this.state.userInput) {
-         formElArr.push({
+         formElementsArr.push({
             id: key,
             config: this.state.userInput[key]
          })
       }
-       console.log(formElArr);
-
+      // console.log(formElementsArr);
       var style = {
          image: {
             width: 125,
@@ -113,36 +109,34 @@ class login extends Component {
          }
       }
       let form = (
-         <form onSubmit={this.loginHandler}>
+         <form onSubmit={this.registrationHandler}>
             <div className={classes.LogoModal}>
                <i><img src={logoImg} style={style.image} alt='logo' /></i>
             </div>
             <span className={classes.TitleModal}>Sign Up</span>
             <div>
-               <h1>Google sign in box</h1>
+               <img onClick={this.googleSignIn} className={classes.googleBtn} src={googleImg} alt="Google Sign In Btn" />
             </div>
             <div className='Or'>
                <h2><span>Or</span></h2>
             </div>
-            {formElArr.map(formEl => {
+            {formElementsArr.map(loginEl => {
                return (
-                  <Input key={formEl.id}
-                     elementType={formEl.config.elementtype}
-                     elementConfig={formEl.config.elementConfig}
-                     value={formEl.config.value}
-                     label={formEl.config.label}
-                     icon={formEl.config.icon}
-                     invalid={!formEl.config.valid}
-                     touched={formEl.config.touch}
-                     change={(event) => this.handleInputChange(event, formEl.id)}
+                  <Input key={loginEl.id}
+                     elementType={loginEl.config.elementtype}
+                     elementConfig={loginEl.config.elementConfig}
+                     value={loginEl.config.value}
+                     label={loginEl.config.label}
+                     icon={loginEl.config.icon}
+                     invalid={!loginEl.config.valid}
+                     touched={loginEl.config.touch}
+                     change={(event) => this.loginInputChange(event, loginEl.id)}
                   />
                )
             })}
             <Button btnType='Success' disabled={!this.state.formIsValid}>Create Account</Button>
          </form>
       )
-
-
       return (
          <div >
             {form}

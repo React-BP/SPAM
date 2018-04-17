@@ -3,6 +3,7 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/button';
 import classes from './registration.css';
 import logoImg from "../../assets/Images/reactBP.png";
+import googleImg from '../../assets/Images/googleSignIn.png';
 // import swal from 'sweet-alert'
 import axios from 'axios';
 class Registration extends Component {
@@ -144,7 +145,7 @@ class Registration extends Component {
                 </div>
                 <span className={classes.TitleModal}>Sign Up</span>
                 <div>
-                    <h1>Google sign in box</h1>
+                    <img onClick={this.googleSignIn} className={classes.googleBtn} src={googleImg} alt="Google Sign In Btn" />
                 </div>
                 <div className='Or'>
                     <h2><span>Or</span></h2>

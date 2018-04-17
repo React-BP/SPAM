@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Input.css';
-import './Input.css';
+
 
 
 const input = (props) => {
@@ -14,13 +14,16 @@ const input = (props) => {
 
       switch (props.elementType) {
             case ('login'):
-                  inputEl = (  <div className={classes.InputDiv}>
+                  inputEl = ( 
+                        <div> 
+                              <div className={classes.InputDiv}>
                                     <span className={props.icon}></span>
-                                     <input className={inputClasses.join(' ')} {...props.elementConfig}
-                                            value={props.value}
-                                            onChange={props.change}
+                                    <input className={inputClasses.join(' ')}                           {...props.elementConfig}
+                                          value={props.value}
+                                          onChange={props.change}
                                     />
                               </div>
+                        </div>
                   )
                   break;
             case ('register'):
