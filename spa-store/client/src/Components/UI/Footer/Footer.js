@@ -7,7 +7,7 @@ const Footer = () => (
 
     <div className="footer text-center">
         <span className="glyphicon glyphicon-copyright-mark">React-BP</span>
-        <a href="https://www.github.com/mateovargas" className="footerLink"><span className="fa fa-github">Github</span></a>
+        <a href="https://github.com/React-BP/SPAM-store" className="footerLink"><span className="fa fa-github">Github</span></a>
     </div>
 
 );
