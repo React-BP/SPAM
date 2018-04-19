@@ -1,14 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import classes from './NavButton.css';
+import { NavLink } from "react-router-dom";
 
 const NavButton = (props) => {
     return(
-        <li className="/">}>
-            <Link to="/">{this.props.text}</Link>
-        </li>
+        <div>
+            <li className={classes.NavButton}>
+                <NavLink
+                    exact={props.exact}
+                    activeClassName={classes.active}
+                    to={props.link}>{props.children}
+                </NavLink>
+            </li>
+        </div>
     );
 }
 
 export default NavButton; 
-
-//{window.location.pathname === "/" ? "active" : ""
