@@ -1,52 +1,31 @@
+//Extract all the html 
 import React, { Component } from 'react';
-// import './App.css';
-// import Registration from '../../Components/Auth/Registration/Registration';
-import Login from "../../Components/Auth/Login/login";
-import Modal from '../../Components/UI/Modal/modal';
-import Registration from '../../Components/Auth/Registration/Registration';
-import Layout from './../Layout/Layout';
+import {Route, Switch} from "react-router-dom";
+import Layout from "../Layout/Layout";
+// import NavigationItems from "../../Components/Navigation/NavigationItems/NavigationItems";
+import Home from "../../Components/Pages/Home/Home";
+import Wetsuits from "../../Components/Pages/Wetsuits/Wetsuits";
+import Boards from "../../Components/Pages/Boards/Boards";
+import Clothing from "../../Components/Pages/Clothing/Clothing";
+import Accessories from "../../Components/Pages/Accessories/Accessories";
 
 class App extends Component {
-  state={
-    modalLog: false,
-    modalReg: false
-  }
 
-  loginHandler = () => {
-    this.setState({ modalLog: true });
-  }
-  registerHandler = ()=>{
-    this.setState({ modalReg: true });
-  }
-  loginCancelHandler = ()=>{
-    this.setState({ modalLog: false});
-  }
-  regCancelHandler = ()=>{
-    this.setState({ modalReg: false});
-  }
-
-  
-
-
-  render() {
-    let logRegBtn =
-      (
-        <div>
-          <button onClick={this.loginHandler}>Login</button>
-          <button onClick={this.registerHandler}>Register</button>
-        </div>
-      )
-    return (
-      <div className="App">
-      <Layout>
-      <Modal show={this.state.modalLog} modalClosed={this.loginCancelHandler}>
-          <Login />
-      </Modal>
-      <Modal show={this.state.modalReg} modalClosed={this.regCancelHandler}>
-        <Registration/>
-      </Modal>
-        {logRegBtn}
-      </Layout>
+  render(){
+    return(
+      <div>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/store/wetsuits" component={Wetsuits} />
+            <Route exact path="/store/boards" component={Boards} />
+            <Route exact path="/store/clothing" component={Clothing} />
+            <Route exact path="/store/accessories" component={Accessories} />
+            {/* <Route exact path="/store/login" /> */}
+            <Route exact path="/store/logout" />
+            {/* <Route exact path="/store/signup" /> */}
+          </Switch>
+        </Layout>
       </div>
     );
   }

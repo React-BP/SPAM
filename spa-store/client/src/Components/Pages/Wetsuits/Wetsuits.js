@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
-import API from "../../../utils/API";
+// import API from "../../../utils/API";
 
 class Wetsuits extends Component {
     state = {

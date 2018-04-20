@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavButton = (props) => {
     return(
         <div>
-            <li className={classes.NavButton}>
+            <li className={classes.NavItem}>
                 <NavLink
                     exact={props.exact}
                     activeClassName={classes.active}

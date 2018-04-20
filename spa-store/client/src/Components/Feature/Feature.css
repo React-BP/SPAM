@@ -1,0 +1,17 @@
+.card {
+    /* display: inline-flex; */
+    width: 225px;
+    height: 375px;
+    background-color: dimgray;
+    margin: 30px;
+    border: solid 8px gray;
+    justify-content: space-between;
+}
+.imgCont {
+    flex-wrap: wrap;
+}
+.itemInfo{
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

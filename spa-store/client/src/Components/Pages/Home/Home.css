@@ -1,17 +1,11 @@
-.jumbotron{
-    background-color: #D8C3A5 !important;
-    margin-bottom: 0% !important;
+.FeatureBox{
+    grid-row: 6/10;
+    grid-column: 1/12;
+    display: flex;
+    z-index: 35;
 }
-
-.display-4{
-    color: #E85A4F !important;
-}
-
-.lead{
-    color: #E98074 !important;
-}
-
-.home-image{
-    height: 75%;
-    width: 100%;
+.mainBox{
+    grid-row: 1/20;
+    grid-column: 1/12;
+    z-index: 15;
 }
