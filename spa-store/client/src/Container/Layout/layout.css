@@ -1,0 +1,10 @@
+.container{
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
+   grid-template-rows: minmax(50px, auto);
+   grid-gap: 10px;
+   grid-template-areas: "nav nav nav nav nav nav nav nav nav nav nav nav"
+                         "head head head head head head head head head head head head"
+                         "items items items items items items items items items items items items"
+                         "footer footer footer footer footer footer footer footer footer footer footer footer";
+}

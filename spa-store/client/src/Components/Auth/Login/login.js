@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Input from '../UI/Input/Input';
-import Button from '../UI/Button/button';
-import logoImg from "../../assets/Images/reactBP.png";
-import googleImg from '../../assets/Images/googleSignIn.png';
+import Input from '../../UI/Input/Input';
+import Button from '../../UI/Button/button';
+import logoImg from "../../../assets/Images/reactBP.png";
+import googleImg from '../../../assets/Images/googleSignIn.png';
 import classes from "./login.css";
 import axios from 'axios';
-import swal from 'sweet-alert';
 
 class login extends Component {
 
@@ -56,10 +55,10 @@ class login extends Component {
 
       axios.post('/api/login', formData).then(response => {
          console.log(response);
-          swal("Thank you for registering with React BP. Please Login.");
+        alert("Successfully Logged In");
 
       }).catch(error => {
-         console.log(error.response);
+         console.log(error);
       });
    }
 
@@ -115,13 +114,7 @@ class login extends Component {
             <div className={classes.LogoModal}>
                <i><img src={logoImg} style={style.image} alt='logo' /></i>
             </div>
-            <span className={classes.TitleModal}>Sign Up</span>
-            <div className={classes.googleBtn}>
-               <img src={googleImg} alt="Google Sign In Btn" />
-            </div>
-            <div className='Or'>
-               <h2><span>Or</span></h2>
-            </div>
+            <span className={classes.TitleModal}>Sign Up</span>                
             {formElementsArr.map(loginEl => {
                return (
                   <Input key={loginEl.id}
@@ -136,6 +129,12 @@ class login extends Component {
                   />
                )
             })}
+              <div className='Or'>
+                  <h2><span>Or</span></h2>
+              </div>
+              <div className={classes.googleBtn}>
+                  <img src={googleImg} alt="Google Sign In Btn" />
+              </div>      
             <Button btnType='Success' clicked={this.loginHandler} disabled={!this.state.formIsValid}>Create Account</Button>
          </form>
       )

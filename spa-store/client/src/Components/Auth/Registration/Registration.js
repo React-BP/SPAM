@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Input from '../UI/Input/Input';
-import Button from '../UI/Button/button';
+import Input from '../../UI/Input/Input';
+import Button from '../../UI/Button/button';
 import classes from './registration.css';
-import logoImg from "../../assets/Images/reactBP.png";
-import googleImg from '../../assets/Images/googleSignIn.png';
+import logoImg from "../../../assets/Images/reactBP.png";
+import googleImg from '../../../assets/Images/googleSignIn.png';
 // import swal from 'sweet-alert'
 import axios from 'axios';
 class Registration extends Component {
@@ -40,6 +40,21 @@ class Registration extends Component {
                 valid: false,
                 touched: false
             },
+            username: {
+                elementtype: 'register',
+                elementConfig: {
+                    type: 'username',
+                    placeholder: 'Your Username'
+                },
+                value: '',
+                label: 'Username',
+                icon: 'fas fa-user',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
             password: {
                 elementtype: 'register',
                 elementConfig: {
@@ -55,22 +70,8 @@ class Registration extends Component {
                 },
                 valid: false,
                 touched: false
-            },
-            username: {
-                elementtype: 'register',
-                elementConfig: {
-                    type: 'username',
-                    placeholder: 'Your Username'
-                },
-                value: '',
-                label: 'Username',
-                icon: 'fas fa-user',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
             }
+           
         },
         formIsValid: false
     }
