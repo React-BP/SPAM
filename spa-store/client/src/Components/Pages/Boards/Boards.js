@@ -1,38 +1,79 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
-// import API from "../../../utils/API";
-<<<<<<< HEAD
-=======
 import Header from './../../Header/Header';
-import boardImg from '../../../assets/Images/boards.JPG';
->>>>>>> master
+import boardImg from '../../../Assets/Images/boards.JPG';
+import API from '../../../utils/API';
 
 class Boards extends Component {
     state = {
-        search: "",
-        results: []
+        items: [],
+        loading: false,
+        featured: {}
     };
 
-    // When this component mounts, search the Giphy API for pictures of kittens
     componentDidMount() {
-        //this.searchGiphy("surfers");
+        this.loadBoards();
     }
 
-    /**searchGiphy = query => {
-        API.search(query)
-            .then(res => this.setState({ results: res.data.data }))
-            .catch(err => console.log(err));
-    };**/
+    loadBoards(){
+       API.searchItems('surfboard')
+           .then(res => {
 
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-    };
+               const fetched = [];
+               for (let key in res.data) {
+                   fetched.push({
+                       ...res.data[key],
+                       id: key
+                   });
+               }
 
+               this.setState({
+                   loading: false,
+                   items: fetched
+               });
+
+           }).catch(err => {
+               this.setState({ loading: false });
+           });
+    }
+
+    loadSortedBoards(){
+        API.searchSortedItems({
+            type: 'surfboard',
+            sort: 'price'
+        })
+            .then(res => {
+
+                const fetched = [];
+                for (let key in res.data) {
+                    fetched.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+
+                this.setState({
+                    loading: false,
+                    items: fetched
+                });
+
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
+    }
+
+    loadItem(id) {
+        API.searchItem(id)
+            .then(res => {
+                this.setState({
+                    featured: res.data
+                });
+            }).catch(err => {
+                this.setState({ loading: false });
+            })
+    }
+    
     render() {
         return (
             <div className="content-container">

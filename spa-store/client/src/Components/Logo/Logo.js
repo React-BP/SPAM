@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import img from '../../Assets/Images/reactBP.png';
-=======
-import img from '../../assets/Images/reactBP.png';
->>>>>>> master
 import classes from './Logo.css';
 
 const Logo = () => {
