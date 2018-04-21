@@ -1,0 +1,19 @@
+.footer {
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  height: 100px;
+  z-index: 50;
+  
+}
+
+a.footerLink{
+    color: black !important;
+    text-decoration: line-through !important;
+    grid-column: 6 / 8;
+    grid-row: 1;
+}
+
+a.footerLink:hover{
+  color: #E85A4F !important;
+}
