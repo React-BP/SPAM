@@ -127,10 +127,6 @@ class Wetsuits extends Component {
     render() {
         return (
             <div className="content-container">
-                <Filter />
-                <Header
-                    image={wetImg}
-                    title='Wetsuits' />
             </div>
         );
     }

@@ -128,11 +128,6 @@ class Clothing extends Component {
     render() {
         return (
             <div className="content-container">
-                <Filter />
-                <Header
-                    image={clothingImg}
-                    title='Clothing' />
-                <Results results={this.state.results} />
             </div>
         );
     }

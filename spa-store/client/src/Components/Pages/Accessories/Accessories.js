@@ -78,11 +78,6 @@ class Accessories extends Component {
     render() {
         return (
             <div className="content-container">
-                <Filter />
-                <Header
-                    image={accesoriesImg}
-                    title=' Accessories' />
-                <Results results={this.state.results} />
             </div>
         );
     }

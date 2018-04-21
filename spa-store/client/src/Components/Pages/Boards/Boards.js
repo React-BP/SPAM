@@ -77,11 +77,7 @@ class Boards extends Component {
     render() {
         return (
             <div className="content-container">
-                <Filter />
-                <Header
-                    image={boardImg}
-                    title='Short &amp; Long Boards' />
-                <Results results={this.state.results} />
+            
             </div>
         );
     }
