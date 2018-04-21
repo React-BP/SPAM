@@ -24,17 +24,10 @@ app.use(express.static("client/build"));
 app.use(routes);
 app.use(routeUser);
 
-<<<<<<< HEAD
-// // Set up promises with mongoose
-mongoose.Promise = global.Promise;
-// // Connect to the Mongo DB
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
-=======
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/store");
->>>>>>> reg
 
 // Start the API server
 app.listen(PORT, function () {

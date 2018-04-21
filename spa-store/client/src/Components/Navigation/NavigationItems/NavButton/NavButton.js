@@ -5,11 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavButton = (props) => {
     return(
         <div>
-<<<<<<< HEAD
-            <li className={classes.NavButton}>
-=======
             <li className={classes.NavItem}>
->>>>>>> reg
                 <NavLink
                     exact={props.exact}
                     activeClassName={classes.active}

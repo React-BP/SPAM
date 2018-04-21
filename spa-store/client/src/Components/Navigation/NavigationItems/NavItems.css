@@ -1,9 +1,5 @@
 .NavigationItems{
-<<<<<<< HEAD
-   margin: 0;
-=======
    margin-left: 100px;
->>>>>>> reg
    padding:0;
    list-style: none;
    display: flex;
@@ -11,10 +7,6 @@
    align-items: center;
    height: 100%;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> reg
 @media(min-width:500px){
    .NavigationItems{
       flex-flow: row;

@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
-<<<<<<< HEAD
-import API from "../../../utils/API";
-=======
 // import API from "../../../utils/API";
->>>>>>> reg
 
 class Boards extends Component {
     state = {
