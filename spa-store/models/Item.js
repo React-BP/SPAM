@@ -9,7 +9,8 @@ const itemSchema = new Schema({
     price: { type: Number, default: 9.99},
     quantity: {type: Number, required: true},
     gender: {type: String, required: false},
-    image: {type: String, required: true}
+    image: {type: String, required: true},
+    type:{type:String, required: true}
 });
 
 const Item = mongoose.model("Item", itemSchema);

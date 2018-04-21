@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
 // import API from "../../../utils/API";
+import Header from './../../Header/Header';
+import wetImg from '../../../assets/Images/wetsuit.jpg';
 
 class Wetsuits extends Component {
     state = {
@@ -32,6 +34,9 @@ class Wetsuits extends Component {
         return (
             <div className="content-container">
                 <Filter />
+                <Header
+                    image={wetImg}
+                    title='Wetsuits' />
                 <Results results={this.state.results} />
             </div>
         );
