@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
 // import API from "../../../utils/API";
+<<<<<<< HEAD
+=======
 import Header from './../../Header/Header';
 import accesoriesImg from '../../../assets/Images/pipeline.jpg';
+>>>>>>> master
 
 class Accessories extends Component {
     state = {

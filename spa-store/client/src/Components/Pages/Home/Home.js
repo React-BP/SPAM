@@ -2,8 +2,15 @@ import React from "react";
 import "./Home.css";
 import Header from '../../Header/Header';
 import Featured from '../../Feature/Feature';
+<<<<<<< HEAD
+
+
+import homeImage from "../../../Assets/Images/pipeline.jpg";
+import img from '../../../Assets/Images/reactBP.png';
+=======
 import homeImage from "../../../assets/Images/homeImage.jpg";
 import img from '../../../assets/Images/reactBP.png';
+>>>>>>> master
 import classes from './Home.css';
 
 const Home = () => {
