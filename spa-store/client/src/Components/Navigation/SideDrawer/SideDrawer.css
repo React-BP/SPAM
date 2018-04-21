@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .SideDrawer{
+=======
+ .SideDrawer{
+>>>>>>> reg
    position: fixed;
    width: 200px;
    max-width: 70%;
@@ -10,13 +14,21 @@
    padding: 32px 16px;
    box-sizing: border-box;
    transition: transform 0.3s ease-out;
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> reg
 @media (min-width: 500px){
    .SideDrawer{
       display: none;
    }
 }
+<<<<<<< HEAD
 .Open{
+=======
+ .Open{
+>>>>>>> reg
    transform: translateX(0);
 }
 .Close{
@@ -30,4 +42,8 @@
    .DesktopOnly{
       display: none;
    }
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> reg

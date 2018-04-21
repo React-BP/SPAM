@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
+<<<<<<< HEAD
 import API from "../../../utils/API";
+=======
+// import API from "../../../utils/API";
+>>>>>>> reg
 
 class Accessories extends Component {
     state = {
