@@ -7,6 +7,10 @@
    align-items: center;
    height: 100%;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 @media(min-width:500px){
    .NavigationItems{
       flex-flow: row;

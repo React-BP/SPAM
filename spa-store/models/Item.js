@@ -10,7 +10,7 @@ const itemSchema = new Schema({
     quantity: {type: Number, required: true},
     gender: {type: String, required: false},
     image: {type: String, required: true},
-    type: {type: String, required: true}
+    type:{type:String, required: true}
 });
 
 const Item = mongoose.model("Item", itemSchema);

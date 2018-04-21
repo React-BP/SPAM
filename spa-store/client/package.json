@@ -57,13 +57,6 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "(https://github.com/React-BP/SPAM-store)"
-  },
   "author": "Daniel Ward, Matt Groe, Mateo Vargas, Gena Reidler",
   "license": "MIT",
   "jest": {

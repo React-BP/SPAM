@@ -1,5 +1,7 @@
-export default {
+const dataBase = {
     Item: require("./Item"),
-    User: require("./users"),
-    Order: require("./order")
+    Order: require('./Order'),
+    User: require("./users")
 }
+
+module.exports = dataBase;
