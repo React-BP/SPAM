@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/button';
 import classes from './registration.css';
-import logoImg from "../../../Assets/Images/reactBP.png";
-import googleImg from '../../../Assets/Images/googleSignIn.png';
+import logoImg from "../../../assets/Images/reactBP.png";
+import googleImg from '../../../assets/Images/googleSignIn.png';
 // import swal from 'sweet-alert'
 import axios from 'axios';
 class Registration extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/button';
-import logoImg from "../../../Assets/Images/reactBP.png";
-import googleImg from '../../../Assets/Images/googleSignIn.png';
+import logoImg from "../../../assets/Images/reactBP.png";
+import googleImg from '../../../assets/Images/googleSignIn.png';
 import classes from "./login.css";
 import axios from 'axios';
 

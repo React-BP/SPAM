@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
+import classes from './wetsuit.css';
 // import API from "../../../utils/API";
-<<<<<<< HEAD
-=======
 import Header from './../../Header/Header';
 import wetImg from '../../../assets/Images/wetsuit.jpg';
->>>>>>> master
 
 class Wetsuits extends Component {
     state = {
@@ -35,7 +33,7 @@ class Wetsuits extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className={classes.mainBox}>
                 <Filter />
                 <Header
                     image={wetImg}

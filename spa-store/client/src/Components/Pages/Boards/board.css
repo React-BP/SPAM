@@ -1,0 +1,5 @@
+.mainBox {
+   grid-row: 1/20;
+   grid-column: 1/12;
+   z-index: 15;
+}
