@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
 import classes from './wetsuit.css';
-// import API from "../../../utils/API";
+import API from "../../../utils/API";
 import Header from './../../Header/Header';
 import wetImg from '../../../assets/Images/wetsuit.jpg';
 
