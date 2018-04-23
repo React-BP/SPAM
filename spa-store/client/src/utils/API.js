@@ -1,21 +1,30 @@
-import mongoose from "mongoose";
+import axios from "axios";
 
 
 // Export an object with a "search" method that searches the Giphy API for the passed query
 export default {
-    searchWetsuits: (query) => {
-
+    searchFeatured: () => {
+        console.log('calling axios');
+        return axios.get("/api/featured");
     },
-    searchBoards: (query) => {
-
+    searchItem: (query) => {
+        console.log('calling axios');
+        return axios.get("/api/" + query);
     },
-    searchClothing: (query) => {
-
+    searchItems: (query) => {
+        console.log('calling axios');
+        return axios.get("/api/" + query.type);
     },
-    filterMens: (query) => {
-
+    searchSortedItems: (query) => {
+        console.log('calling axios');
+        return axios.get("/api/" + query.type + "/" + query.sort);
     },
-    filterWomens: (query) => {
-        
+    searchItemByGender: (query) => {
+        console.log('calling axios');
+        return axios.get("/api/" + query.type + "/" + query.gender);
+    },
+    searchSortedItemsByGender: (query) => {
+        console.log('calling axios');
+        return axios.get("/api/" + query.type + "/" + query.gender + "/" + query.sort);
     }
 };
