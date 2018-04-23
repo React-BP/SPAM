@@ -82,7 +82,7 @@ class Boards extends Component {
                 <Header
                     image={boardImg}
                     title='Short &amp; Long Boards' />
-                <Results results={this.state.results} />
+                {/* <Results results={this.state.results} /> */}
             </div>
         );
     }

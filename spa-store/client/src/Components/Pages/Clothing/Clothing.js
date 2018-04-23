@@ -133,7 +133,7 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
-                <Results results={this.state.results} />
+                {/* <Results results={this.state.results} /> */}
             </div>
         );
     }

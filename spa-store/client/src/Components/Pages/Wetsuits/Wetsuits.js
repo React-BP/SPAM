@@ -38,7 +38,7 @@ class Wetsuits extends Component {
             <Header
                image={wetImg}
                title='Wetsuits' />
-            <Results results={this.state.results} />
+            {/* <Results results={this.state.results} /> */}
          </div>
       );
    }
