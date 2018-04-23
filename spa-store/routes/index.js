@@ -1,12 +1,9 @@
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+const apiRoutes = require("./API/api");
 
-// If no API routes are hit, send the React app
-// router.use(function (req, res) {
-//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
-router.us("/api", apiRoutes);
+
+router.use("/api", apiRoutes);
 
 if( process.env === 'PRODUCTION'){
     router.use(function (req, res) {

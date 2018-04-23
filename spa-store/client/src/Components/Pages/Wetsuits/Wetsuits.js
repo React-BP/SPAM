@@ -1,35 +1,128 @@
 import React, { Component } from "react";
 import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
-import classes from './wetsuit.css';
-// import API from "../../../utils/API";
 import Header from './../../Header/Header';
 import wetImg from '../../../assets/Images/wetsuit.jpg';
+import API from "../../../utils/API";
 
 class Wetsuits extends Component {
     state = {
-        search: "",
-        results: []
+        items: [],
+        loading: true
     };
 
-    // When this component mounts, search the Giphy API for pictures of kittens
     componentDidMount() {
-        //this.searchGiphy("surfers");
+        this.loadWetsuits()
     }
 
-    /**searchGiphy = query => {
-        API.search(query)
-            .then(res => this.setState({ results: res.data.data }))
-            .catch(err => console.log(err));
-    };**/
+    loadWetsuits(){
+        API.searchItems('wetsuits')
+            .then(res => {
 
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-    };
+                const fetched = [];
+                for (let key in res.data) {
+                    fetched.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+
+                this.setState({
+                    loading: false,
+                    items: fetched
+                });
+
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
+    }
+
+    loadSortedWetsuits(){
+        API.searchSortedItems({
+            type: 'wetsuits',
+            sort: 'price'
+        })
+            .then(res => {
+
+                const fetched = [];
+                for (let key in res.data) {
+                    fetched.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+
+                this.setState({
+                    loading: false,
+                    items: fetched
+                });
+
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
+    }
+
+    loadWetsuitsByGender(gender){
+        API.searchSortedItemsByGender({
+            type: 'wetsuits',
+            gender: gender
+        })
+            .then(res => {
+
+                const fetched = [];
+                for (let key in res.data) {
+                    fetched.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+
+                this.setState({
+                    loading: false,
+                    items: fetched
+                });
+
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
+    }
+
+    loadSortedWetsuitsByGender(gender){
+        API.searchSortedItemsByGender({
+            type: 'wetsuits',
+            gender: gender,
+            sort: 'price'
+        })
+            .then(res => {
+
+                const fetched = [];
+                for (let key in res.data) {
+                    fetched.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+
+                this.setState({
+                    loading: false,
+                    items: fetched
+                });
+
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
+    }
+
+    loadItem(id) {
+        API.searchItem(id)
+            .then(res => {
+                this.setState({
+                    featured: res.data
+                });
+            }).catch(err => {
+                this.setState({ loading: false });
+            })
+    }
 
     render() {
         return (
@@ -38,7 +131,6 @@ class Wetsuits extends Component {
                 <Header
                     image={wetImg}
                     title='Wetsuits' />
-                <Results results={this.state.results} />
             </div>
         );
     }
