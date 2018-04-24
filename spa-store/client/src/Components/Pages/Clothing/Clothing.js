@@ -4,6 +4,9 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
 import classes from './clothing.css';
 
 class Clothing extends Component {
@@ -133,7 +136,18 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
-                {/* <Results results={this.state.results} /> */}
+                {/* <ItemCards price={}
+                ItemTitle={}
+                itemName={}
+                itemPic={}
+                click={}               
+                />
+                <Modal show={this.state.itemModal}
+                modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={}
+                    singlePicInfo={}
+                    sizes={}/>
+                </Modal> */}
             </div>
         );
     }

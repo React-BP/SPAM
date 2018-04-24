@@ -5,6 +5,9 @@ import Featured from '../../Feature/Feature';
 import homeImage from "../../../Assets/Images/homeImage.jpg";
 import img from '../../../Assets/Images/reactBP.png';
 import classes from './Home.css';
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
 import API from "../../../utils/API";
 
 class Home extends Component {
@@ -64,7 +67,8 @@ class Home extends Component {
                     <Featured
                         item1={img}
                         ItemTitle='Item # 1'
-                        price='4.20'/>
+                        price='4.20'
+                         />
                     <Featured
                         item1={img}
                         ItemTitle='Item # 2'
