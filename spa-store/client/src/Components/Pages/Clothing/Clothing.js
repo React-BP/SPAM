@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import Footer from '../../Footer/Footer';
+import Featured from '../../Feature/Feature';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
 import ItemCards from '../../ItemCards/ItemCards';

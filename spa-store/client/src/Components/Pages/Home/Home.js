@@ -71,7 +71,8 @@ class Home extends Component {
                 title='Home Page Store'/>
                     <p className={classes.FeaturedTitle}>Featured Items</p>
                 <div className={classes.FeatureBox}>
-                    {this.state.items.map(item => (                       
+                    {this.state.items.map(item => (                  
+
                         <Featured
                             key={item.id}
                             item1={item.image}
@@ -89,6 +90,7 @@ class Home extends Component {
                     </Modal>
                 </div>
                 <Footer/>
+
             </div>
         );
     }

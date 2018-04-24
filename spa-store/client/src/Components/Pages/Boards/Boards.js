@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import boardImg from '../../../Assets/Images/boards.JPG';
+import Featured from '../../Feature/Feature';
 import API from '../../../utils/API';
 import ItemCards from '../../ItemCards/ItemCards';
 import Modal from "../../UI/Modal/modal";
@@ -87,6 +88,7 @@ class Boards extends Component {
                         singlePicInfo={this.state.featured.name}
                         sizes={this.state.featured.sizes} />
                 </Modal>
+
             </div>
         );
     }

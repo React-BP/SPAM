@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import wetImg from '../../../Assets/Images/wetsuit.jpg';
+import Featured from '../../Feature/Feature';
 import API from "../../../utils/API";
+import Sort from "../../../utils/Sort";
 import ItemCards from '../../ItemCards/ItemCards';
 import Modal from "../../UI/Modal/modal";
 import SingleItem from '../../UI/SingleItem/SingleItem';
@@ -86,6 +88,7 @@ class Wetsuits extends Component {
                         singlePicInfo={this.state.featured.name}
                         sizes={this.state.featured.sizes} />
                 </Modal>
+
             </div>
         );
     }

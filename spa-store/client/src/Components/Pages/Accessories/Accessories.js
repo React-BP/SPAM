@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
+import Featured from '../../Feature/Feature';
 import accesoriesImg from '../../../Assets/Images/pipeline.jpg';
 import API from "../../../utils/API";
 import ItemCards from '../../ItemCards/ItemCards';
@@ -88,6 +89,7 @@ class Accessories extends Component {
                         singlePicInfo={this.state.featured.name}
                         sizes={this.state.featured.sizes} />
                 </Modal>
+
 
             </div>
         );
