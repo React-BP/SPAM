@@ -136,7 +136,7 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
-                {/* <ItemCards price={}
+                <ItemCards price={}
                 ItemTitle={}
                 itemName={}
                 itemPic={}
@@ -147,7 +147,7 @@ class Clothing extends Component {
                     <SingleItem singleItemPic={}
                     singlePicInfo={}
                     sizes={}/>
-                </Modal> */}
+                </Modal>
             </div>
         );
     }

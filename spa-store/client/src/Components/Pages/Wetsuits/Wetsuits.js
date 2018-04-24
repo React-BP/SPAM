@@ -135,7 +135,7 @@ class Wetsuits extends Component {
                 <Header
                     image={wetImg}
                     title='Wetsuits' />
-                {/* <ItemCards price={}
+                <ItemCards price={}
                 ItemTitle={}
                 itemName={}
                 itemPic={}
@@ -146,7 +146,7 @@ class Wetsuits extends Component {
                     <SingleItem singleItemPic={}
                     singlePicInfo={}
                     sizes={}/>
-                </Modal> */}
+                </Modal>
             </div>
         );
     }
