@@ -13,9 +13,9 @@ export default {
     },
     searchItems: (query) => {
         console.log('calling axios');
-        return axios.get("/api/" + query.type);
+        return axios.get("/api/store/" + query);
     },
-    searchSortedItems: (query) => {
+   /** searchSortedItems: (query) => {
         console.log('calling axios');
         return axios.get("/api/" + query.type + "/" + query.sort);
     },
@@ -26,5 +26,5 @@ export default {
     searchSortedItemsByGender: (query) => {
         console.log('calling axios');
         return axios.get("/api/" + query.type + "/" + query.gender + "/" + query.sort);
-    }
+    }**/
 };

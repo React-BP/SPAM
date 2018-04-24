@@ -38,31 +38,6 @@ class Boards extends Component {
            });
     }
 
-    loadSortedBoards(){
-        API.searchSortedItems({
-            type: 'surfboard',
-            sort: 'price'
-        })
-            .then(res => {
-
-                const fetched = [];
-                for (let key in res.data) {
-                    fetched.push({
-                        ...res.data[key],
-                        id: key
-                    });
-                }
-
-                this.setState({
-                    loading: false,
-                    items: fetched
-                });
-
-            }).catch(err => {
-                this.setState({ loading: false });
-            });
-    }
-
     loadItem(id) {
         API.searchItem(id)
             .then(res => {

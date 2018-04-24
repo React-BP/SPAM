@@ -29,6 +29,7 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/store");
 
+var db = mongoose.connection;
 // Start the API server
 app.listen(PORT, function () {
     console.log(`🌎  ==> Server now listening on PORT ${PORT}!`);

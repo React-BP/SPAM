@@ -22,7 +22,7 @@ class Home extends Component {
     loadFeatured(){
         API.searchFeatured()
            .then(res => {
-
+               console.log('res is: ', res.data);
                const fetched = [];
                for(let key in res.data){
                    fetched.push({
@@ -36,7 +36,7 @@ class Home extends Component {
                    items: fetched
                });
 
-               console.log("items is: ", this.state.items);
+              // console.log("items is: ", this.state.items);
 
            }).catch(err => {
                this.setState({loading: false});

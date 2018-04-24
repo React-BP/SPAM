@@ -21,9 +21,7 @@ class App extends Component {
             <Route exact path="/store/boards" component={Boards} />
             <Route exact path="/store/clothing" component={Clothing} />
             <Route exact path="/store/accessories" component={Accessories} />
-            {/* <Route exact path="/store/login" /> */}
             <Route exact path="/store/logout" />
-            {/* <Route exact path="/store/signup" /> */}
           </Switch>
         </Layout>
       </div>
