@@ -1,4 +1,4 @@
-import React from 'react';
+/**import React from 'react';
 import classes from "./SingleItem.css";
 import Button from '../Button/button';
 
@@ -28,4 +28,4 @@ const SingleItem = () => {
     );
 };
 
-export default SingleItem;
+export default SingleItem;**/

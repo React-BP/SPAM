@@ -25,7 +25,7 @@ class Home extends Component {
     loadFeatured(){
         API.searchFeatured()
            .then(res => {
-
+               console.log('res is: ', res.data);
                const fetched = [];
                for(let key in res.data){
                    fetched.push({
@@ -33,11 +33,12 @@ class Home extends Component {
                        id: key
                    });
                }
-
                this.setState({
                    loading: false,
                    items: fetched
                });
+
+              // console.log("items is: ", this.state.items);
 
            }).catch(err => {
                this.setState({loading: false});
@@ -63,21 +64,13 @@ class Home extends Component {
                 title='Home Page Store'/>
                     <h1 className={classes.FeaturedTitle}>Featured Items</h1>
                 <div className={classes.FeatureBox}>
-                
-                    <Featured
-                        item1={img}
-                        ItemTitle='Item # 1'
-                        price='4.20'
-                         />
-                    <Featured
-                        item1={img}
-                        ItemTitle='Item # 2'
-                        price='4.20' />
-                    <Featured
-                        item1={img}
-                        ItemTitle='Item # 3'
-                        price='4.20' />
-                    </div>    
+                    {this.state.items.map(item => (
+                        <Featured
+                            item1={item.image}
+                            ItemTitle={item.title}
+                            price={item.price}/>
+                    ))}
+                </div>    
                 </div>
         );
     }
