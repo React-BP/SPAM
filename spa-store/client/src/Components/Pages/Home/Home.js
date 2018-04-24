@@ -2,10 +2,9 @@ import React, {Component} from "react";
 import "./Home.css";
 import Header from '../../Header/Header';
 import Featured from '../../Feature/Feature';
+import Footer from '../../Footer/Footer';
 import homeImage from "../../../Assets/Images/homeImage.jpg";
-import img from '../../../Assets/Images/reactBP.png';
 import classes from './Home.css';
-import ItemCards from '../../ItemCards/ItemCards';
 import Modal from "../../UI/Modal/modal";
 import SingleItem from '../../UI/SingleItem/SingleItem';
 import API from "../../../utils/API";
@@ -15,11 +14,18 @@ class Home extends Component {
     state = {
         items: [],
         loading: true,
-        featured: {}
+        featured: {},
+        itemModal:false
     }
 
     componentDidMount() {
         this.loadFeatured();
+    }
+    modalHandler = () => {
+        this.setState({ itemModal: true });
+    }
+    modalCancelHandler = () => {
+        this.setState({ itemModal: false });
     }
     
     loadFeatured(){
@@ -57,21 +63,33 @@ class Home extends Component {
     }
 
     render(){    
+        
         return(
             <div className={classes.mainBox}>
                 <Header 
                 image={homeImage}
                 title='Home Page Store'/>
-                    <h1 className={classes.FeaturedTitle}>Featured Items</h1>
+                    <p className={classes.FeaturedTitle}>Featured Items</p>
                 <div className={classes.FeatureBox}>
-                    {this.state.items.map(item => (
+                    {this.state.items.map(item => (                       
                         <Featured
+                            key={item.id}
                             item1={item.image}
-                            ItemTitle={item.title}
-                            price={item.price}/>
+                            ItemTitle={item.name}
+                            price={item.price}
+                            brand={item.brand}
+                            gender={item.gender}
+                            click={this.modalHandler}/>
                     ))}
-                </div>    
+                    <Modal show={this.state.itemModal}
+                        modalClosed={this.modalCancelHandler}>
+                        <SingleItem singleItemPic={this.state.featured.image}
+                            singlePicInfo={this.state.featured.name}
+                            sizes={this.state.featured.sizes} />
+                    </Modal>
                 </div>
+                <Footer/>
+            </div>
         );
     }
 }

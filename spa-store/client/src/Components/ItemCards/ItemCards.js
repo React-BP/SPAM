@@ -16,10 +16,13 @@ const ItemCards = (props) => {
                 <img alt={props.itemName} src={props.itemPic} style={style.image}/>
             </div>
             <div className={classes.itemInfo}>
-                <h3>{props.ItemTitle}</h3>
+                <h3>{props.brand}</h3>
+                <h5>{props.ItemTitle}</h5>
+                <h4>{props.gender}</h4>
                 <p>Price: {props.price}</p>
+                <Button btnType='View' clicked={props.click}>View</Button>
             </div>
-            <Button btnType='View' clicked={props.click}>View</Button>
+            
             
         </div>
     );

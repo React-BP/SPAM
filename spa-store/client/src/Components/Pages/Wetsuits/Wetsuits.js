@@ -11,11 +11,19 @@ import classes from './wetsuits.css';
 class Wetsuits extends Component {
     state = {
         items: [],
-        loading: true
+        loading: true,
+        featured:{},
+        itemModal: false
     };
 
     componentDidMount() {
         this.loadWetsuits()
+    }
+    modalHandler = () => {
+        this.setState({ itemModal: true });
+    }
+    modalCancelHandler = () => {
+        this.setState({ itemModal: false });
     }
 
     loadWetsuits(){
@@ -58,18 +66,26 @@ class Wetsuits extends Component {
                 <Header
                     image={wetImg}
                     title='Wetsuits' />
-                {/* <ItemCards price={}
-                ItemTitle={}
-                itemName={}
-                itemPic={}
-                click={}               
-                /> */}
-                {/* <Modal show={this.state.itemModal}
-                modalClosed={this.modalCancelHandler}>
-                    <SingleItem singleItemPic={}
-                    singlePicInfo={}
-                    sizes={}/>
-                </Modal> */}
+                <div className={classes.ItemBox}>
+                    {this.state.items.map(item => (
+                        <ItemCards
+                            key={item.id}
+                            price={item.price}
+                            ItemTitle={item.name}
+                            itemName={item.name}
+                            itemPic={item.image}
+                            brand={item.brand}
+                            gender={item.gender}
+                            click={this.modalHandler}
+                        />
+                    ))}
+                </div>
+                <Modal show={this.state.itemModal}
+                    modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={this.state.featured.image}
+                        singlePicInfo={this.state.featured.name}
+                        sizes={this.state.featured.sizes} />
+                </Modal>
             </div>
         );
     }

@@ -3,3 +3,8 @@
     grid-column: 1/12;
     z-index: 15;
 }
+.ItemBox {
+    display: flex;
+    flex-wrap: wrap;
+  padding: 0px 50px 0px 100px;
+  }
