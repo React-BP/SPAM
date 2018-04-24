@@ -22,7 +22,7 @@ const Feature = (props) => {
                     <h3>{props.ItemTitle}</h3>
                     <p>Price: {props.price}</p>
                 </div>
-                <Button btnType="View" clicked={}>View</Button>
+                <Button btnType="View" clicked={props.click}>View</Button>
             </div>
         
     );

@@ -4,6 +4,9 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import wetImg from '../../../Assets/Images/wetsuit.jpg';
 import API from "../../../utils/API";
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
 import classes from './wetsuits.css';
 
 class Wetsuits extends Component {
@@ -132,6 +135,18 @@ class Wetsuits extends Component {
                 <Header
                     image={wetImg}
                     title='Wetsuits' />
+                {/* <ItemCards price={}
+                ItemTitle={}
+                itemName={}
+                itemPic={}
+                click={}               
+                />
+                <Modal show={this.state.itemModal}
+                modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={}
+                    singlePicInfo={}
+                    sizes={}/>
+                </Modal> */}
             </div>
         );
     }
