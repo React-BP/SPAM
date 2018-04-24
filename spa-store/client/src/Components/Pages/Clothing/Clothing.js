@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
+import Footer from '../../Footer/Footer';
 import Featured from '../../Feature/Feature';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
@@ -13,11 +14,19 @@ class Clothing extends Component {
     state = {
         items: [],
         loading: true,
-        featured: {}
+        featured: {},
+        itemModal: false
     };
 
     componentDidMount() {
         this.loadClothing();
+    }
+
+    modalHandler = () => {
+        this.setState({ itemModal: true });
+    }
+    modalCancelHandler = () => {
+        this.setState({ itemModal: false });
     }
 
     loadClothing(){
@@ -60,24 +69,27 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
-                {this.state.items.map(item => (
-                    <Featured
-                        item1={item.image}
-                        ItemTitle={item.title}
-                        price={item.price} />
-                ))}
-                {/* <ItemCards price={}
-                ItemTitle={}
-                itemName={}
-                itemPic={}
-                click={}               
-                /> */}
-                {/* <Modal show={this.state.itemModal}
+            <div className={classes.ItemBox}>
+                {this.state.items.map(item =>(
+                    <ItemCards 
+                        key={item.id}
+                        price={item.price}
+                        ItemTitle={item.name}
+                        itemName={item.name}
+                        itemPic={item.image}
+                        brand={item.brand}
+                        gender={item.gender}
+                        click={this.modalHandler}
+                    />
+                ))}                
+            </div>
+                <Modal show={this.state.itemModal}
                 modalClosed={this.modalCancelHandler}>
-                    <SingleItem singleItemPic={}
-                    singlePicInfo={}
-                    sizes={}/>
-                </Modal> */}
+                    <SingleItem singleItemPic={this.state.featured.image}
+                        singlePicInfo={this.state.featured.name}
+                    sizes={this.state.featured.sizes}/>
+                </Modal>
+                <Footer/>
             </div>
         );
     }

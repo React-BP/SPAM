@@ -1,16 +1,15 @@
 .header {
     grid-row: 1 / 4;
     grid-column: 1 / 12;
-    background-color: red;
-    border: 1px solid black;
     z-index: 20;
 }
 
 .Title {
-    grid-row: 1 / 2;
-    grid-column: 5 / 8;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 120px;
+    margin-left: 40%;
     width: 400px;
-    color: #E85A4F !important;
+    color: rgb(3, 121, 81);
     z-index: 30;
 }
 

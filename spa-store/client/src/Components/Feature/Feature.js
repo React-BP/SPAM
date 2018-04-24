@@ -7,7 +7,13 @@ const Feature = (props) => {
         image:{
             height: 185,
             width: 185,
-            textAlign: 'center'
+            marginLeft: 10,
+            marginTop: 10
+        },
+        button:{
+            marginLeft: '15%',
+            marginTop: '-40'
+
         }
     }
 
@@ -19,10 +25,13 @@ const Feature = (props) => {
                     <img alt='Featured Item 1' src={props.item1} style={style.image}/>
                 </div>
                 <div className={classes.itemInfo}>
-                    <h3>{props.ItemTitle}</h3>
+                    <h3>{props.brand}</h3>
+                    <h5>{props.ItemTitle}</h5>
+                    <h5>{props.gender}</h5>
                     <p>Price: {props.price}</p>
+                <Button style={style.button} btnType="View" clicked={props.click}>View</Button>
                 </div>
-                <Button btnType="View" clicked={props.click}>View</Button>
+                
             </div>
         
     );

@@ -68,25 +68,28 @@ class Accessories extends Component {
                 <Filter />
                 <Header
                     image={accesoriesImg}
-                    title=' Accessories' />
-                {this.state.items.map(item => (
-                    <Featured
-                        item1={item.image}
-                        ItemTitle={item.title}
-                        price={item.price} />
-                ))}
-                {/* <ItemCards price={}
-                ItemTitle={}
-                itemName={}
-                itemPic={}
-                click={}               
-                /> */}
-                {/* <Modal show={this.state.itemModal}
-                modalClosed={this.modalCancelHandler}>
-                    <SingleItem singleItemPic={}
-                    singlePicInfo={}
-                    sizes={}/>
-                </Modal> */}
+                    title=' Accessories' />                    
+                <div className={classes.ItemBox}>
+                    {this.state.items.map(item => (
+                        <ItemCards
+                            key={item.id}
+                            price={item.price}
+                            ItemTitle={item.name}
+                            itemName={item.name}
+                            itemPic={item.image}
+                            brand={item.brand}
+                            gender={item.gender}
+                            click={this.modalHandler}
+                        />
+                    ))}
+                </div>
+                <Modal show={this.state.itemModal}
+                    modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={this.state.featured.image}
+                        singlePicInfo={this.state.featured.name}
+                        sizes={this.state.featured.sizes} />
+                </Modal>
+
 
             </div>
         );

@@ -1,13 +1,18 @@
-.card{
+.card{    
     width: 225px;
-    height: 375px;
-    background-color: dimgray;
+    height: 425px;
+    background-color: #648381;
     margin: 30px;
-    border: solid 8px gray;
-    justify-content: space-between;
+    border: solid 8px #353535 ;
+    justify-content: space-around;
 }
 .itemInfo{
     text-align: center;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.imgCont{
+    flex-wrap: wrap;
+    margin-left: 8px;
+    margin-top: 5px;
 }

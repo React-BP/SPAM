@@ -13,11 +13,18 @@ class Boards extends Component {
     state = {
         items: [],
         loading: false,
-        featured: {}
+        featured: {},
+        itemModal: false
     };
 
     componentDidMount() {
         this.loadBoards();
+    }
+    modalHandler = () => {
+        this.setState({ itemModal: true });
+    }
+    modalCancelHandler = () => {
+        this.setState({ itemModal: false });
     }
 
     loadBoards(){
@@ -61,24 +68,27 @@ class Boards extends Component {
                     image={boardImg}
                     title='Short &amp; Long Boards' />
                 <Filter />
-                {this.state.items.map(item => (
-                    <Featured
-                        item1={item.image}
-                        ItemTitle={item.title}
-                        price={item.price} />
-                ))}
-                {/* <ItemCards price={}
-                ItemTitle={}
-                itemName={}
-                itemPic={}
-                click={}               
-                /> */}
-                {/* <Modal show={this.state.itemModal}
-                modalClosed={this.modalCancelHandler}>
-                    <SingleItem singleItemPic={}
-                    singlePicInfo={}
-                    sizes={}/>
-                </Modal> */}
+                <div className={classes.ItemBox}>
+                    {this.state.items.map(item => (
+                        <ItemCards
+                            key={item.id}
+                            price={item.price}
+                            ItemTitle={item.name}
+                            itemName={item.name}
+                            itemPic={item.image}
+                            brand={item.brand}
+                            gender={item.gender}
+                            click={this.modalHandler}
+                        />
+                    ))}
+                </div>
+                <Modal show={this.state.itemModal}
+                    modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={this.state.featured.image}
+                        singlePicInfo={this.state.featured.name}
+                        sizes={this.state.featured.sizes} />
+                </Modal>
+
             </div>
         );
     }
