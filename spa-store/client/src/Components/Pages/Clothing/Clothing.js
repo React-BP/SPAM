@@ -4,6 +4,7 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
+import classes from './clothing.css';
 
 class Clothing extends Component {
     state = {
@@ -127,7 +128,7 @@ class Clothing extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className={classes.mainBox}>
                 <Filter />
                 <Header
                     image={clothingImg}

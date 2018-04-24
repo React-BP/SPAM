@@ -4,16 +4,28 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import accesoriesImg from '../../../Assets/Images/pipeline.jpg';
 import API from "../../../utils/API";
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
+import classes from './accessories.css';
 
 class Accessories extends Component {
     state = {
         items: [],
         loading: false,
-        featured: {}
+        featured: {},
+        itemModal: false
     };
 
     componentDidMount() {
         this.loadAccessories();
+    }
+
+    modalHandler=()=>{
+        this.setState({itemModal:true});
+    }
+    modalCancelHandler=()=>{
+        this.setState({itemModal:false});
     }
 
     loadAccessories(){
@@ -77,12 +89,25 @@ class Accessories extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className={classes.mainBox}>
                 <Filter />
                 <Header
                     image={accesoriesImg}
                     title=' Accessories' />
-                {/* <Results results={this.state.results} /> */}
+                    {/* map out the results from the backend query and use this component to display, ItemName and ItemTitle are the same value */}
+                <ItemCards price={}
+                ItemTitle={}
+                itemName={}
+                itemPic={}
+                click={}               
+                />
+                <Modal show={this.state.itemModal}
+                modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={}
+                    singlePicInfo={}
+                    sizes={}/>
+                </Modal>
+
             </div>
         );
     }

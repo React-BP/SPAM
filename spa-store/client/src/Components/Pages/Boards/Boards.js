@@ -4,6 +4,7 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import boardImg from '../../../Assets/Images/boards.JPG';
 import API from '../../../utils/API';
+import classes from "./boards.css";
 
 class Boards extends Component {
     state = {
@@ -76,11 +77,12 @@ class Boards extends Component {
     
     render() {
         return (
-            <div className="content-container">
-                <Filter />
+            <div className={classes.mainBox}>
+                
                 <Header
                     image={boardImg}
                     title='Short &amp; Long Boards' />
+                <Filter />
                 {/* <Results results={this.state.results} /> */}
             </div>
         );

@@ -1,0 +1,14 @@
+.orderBox{
+    width: 250px;
+    height: 200px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px black;
+    color: black;
+    background-color: beige;
+}
+.modalContent{
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
