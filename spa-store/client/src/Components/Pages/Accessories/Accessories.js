@@ -80,8 +80,8 @@ class Accessories extends Component {
                 itemName={}
                 itemPic={}
                 click={}               
-                />
-                <Modal show={this.state.itemModal}
+                /> */}
+                {/* <Modal show={this.state.itemModal}
                 modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={}
                     singlePicInfo={}

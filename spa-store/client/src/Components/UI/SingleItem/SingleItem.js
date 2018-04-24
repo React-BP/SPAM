@@ -10,7 +10,9 @@ const SingleItem = () => {
         }
     }
 
-    orderHandler =()=>{
+    const orderHandler=(event)=>{
+        let order = {};
+        event.preventDefault;
         console.log("Order button works");
     }
 
