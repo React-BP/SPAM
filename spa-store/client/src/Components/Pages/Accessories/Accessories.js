@@ -82,7 +82,7 @@ class Accessories extends Component {
                 <Header
                     image={accesoriesImg}
                     title=' Accessories' />
-                <Results results={this.state.results} />
+                {/* <Results results={this.state.results} /> */}
             </div>
         );
     }
