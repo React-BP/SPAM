@@ -4,6 +4,7 @@ import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import wetImg from '../../../Assets/Images/wetsuit.jpg';
 import API from "../../../utils/API";
+import classes from './wetsuits.css';
 
 class Wetsuits extends Component {
     state = {
@@ -126,7 +127,7 @@ class Wetsuits extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className={classes.mainBox}>
                 <Filter />
                 <Header
                     image={wetImg}

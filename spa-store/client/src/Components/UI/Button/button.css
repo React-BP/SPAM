@@ -22,6 +22,12 @@
 .Danger {
     color: #944317;
 }
+.View{
+    color: aqua;
+}
+.Order{
+    color: yellow;
+}
 .Button:disabled{
     color: #ccc;
     cursor: not-allowed;
