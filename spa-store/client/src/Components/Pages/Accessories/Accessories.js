@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
+import Featured from '../../Feature/Feature';
 import accesoriesImg from '../../../Assets/Images/pipeline.jpg';
 import API from "../../../utils/API";
 import ItemCards from '../../ItemCards/ItemCards';
@@ -68,7 +69,12 @@ class Accessories extends Component {
                 <Header
                     image={accesoriesImg}
                     title=' Accessories' />
-                    {/* map out the results from the backend query and use this component to display, ItemName and ItemTitle are the same value */}
+                {this.state.items.map(item => (
+                    <Featured
+                        item1={item.image}
+                        ItemTitle={item.title}
+                        price={item.price} />
+                ))}
                 {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}

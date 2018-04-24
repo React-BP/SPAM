@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import boardImg from '../../../Assets/Images/boards.JPG';
+import Featured from '../../Feature/Feature';
 import API from '../../../utils/API';
 import ItemCards from '../../ItemCards/ItemCards';
 import Modal from "../../UI/Modal/modal";
@@ -60,6 +61,12 @@ class Boards extends Component {
                     image={boardImg}
                     title='Short &amp; Long Boards' />
                 <Filter />
+                {this.state.items.map(item => (
+                    <Featured
+                        item1={item.image}
+                        ItemTitle={item.title}
+                        price={item.price} />
+                ))}
                 {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}

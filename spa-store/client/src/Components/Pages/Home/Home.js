@@ -64,14 +64,14 @@ class Home extends Component {
                 title='Home Page Store'/>
                     <h1 className={classes.FeaturedTitle}>Featured Items</h1>
                 <div className={classes.FeatureBox}>
-                    {this.state.items.map(item => (
+                     {this.state.items.map(item => (
                         <Featured
                             item1={item.image}
                             ItemTitle={item.title}
                             price={item.price}/>
                     ))}
-                </div>    
-                </div>
+                </div>   
+            </div>
         );
     }
 }

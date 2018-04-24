@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
+import Featured from '../../Feature/Feature';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
 import ItemCards from '../../ItemCards/ItemCards';
@@ -59,6 +60,12 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
+                {this.state.items.map(item => (
+                    <Featured
+                        item1={item.image}
+                        ItemTitle={item.title}
+                        price={item.price} />
+                ))}
                 {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}
