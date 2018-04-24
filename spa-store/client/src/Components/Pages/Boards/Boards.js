@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import boardImg from '../../../Assets/Images/boards.JPG';
 import API from '../../../utils/API';
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
+import classes from "./boards.css";
 
 class Boards extends Component {
     state = {
@@ -51,8 +54,24 @@ class Boards extends Component {
     
     render() {
         return (
-            <div className="content-container">
-            
+            <div className={classes.mainBox}>
+                
+                <Header
+                    image={boardImg}
+                    title='Short &amp; Long Boards' />
+                <Filter />
+                {/* <ItemCards price={}
+                ItemTitle={}
+                itemName={}
+                itemPic={}
+                click={}               
+                />
+                <Modal show={this.state.itemModal}
+                modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={}
+                    singlePicInfo={}
+                    sizes={}/>
+                </Modal> */}
             </div>
         );
     }

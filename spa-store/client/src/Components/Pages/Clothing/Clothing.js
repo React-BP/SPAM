@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Results from "./Results";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import clothingImg from '../../../Assets/Images/clothing.jpg';
 import API from "../../../utils/API";
+import ItemCards from '../../ItemCards/ItemCards';
+import Modal from "../../UI/Modal/modal";
+import SingleItem from '../../UI/SingleItem/SingleItem';
+import classes from './clothing.css';
 
 class Clothing extends Component {
     state = {
@@ -51,7 +54,23 @@ class Clothing extends Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className={classes.mainBox}>
+                <Filter />
+                <Header
+                    image={clothingImg}
+                    title='Clothing' />
+                {/* <ItemCards price={}
+                ItemTitle={}
+                itemName={}
+                itemPic={}
+                click={}               
+                />
+                <Modal show={this.state.itemModal}
+                modalClosed={this.modalCancelHandler}>
+                    <SingleItem singleItemPic={}
+                    singlePicInfo={}
+                    sizes={}/>
+                </Modal> */}
             </div>
         );
     }
