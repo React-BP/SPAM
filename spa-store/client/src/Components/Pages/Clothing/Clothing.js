@@ -59,18 +59,18 @@ class Clothing extends Component {
                 <Header
                     image={clothingImg}
                     title='Clothing' />
-                <ItemCards price={}
+                {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}
                 itemPic={}
                 click={}               
-                />
-                <Modal show={this.state.itemModal}
+                /> */}
+                {/* <Modal show={this.state.itemModal}
                 modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={}
                     singlePicInfo={}
                     sizes={}/>
-                </Modal>
+                </Modal> */}
             </div>
         );
     }

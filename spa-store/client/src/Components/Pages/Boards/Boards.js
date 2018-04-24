@@ -60,18 +60,18 @@ class Boards extends Component {
                     image={boardImg}
                     title='Short &amp; Long Boards' />
                 <Filter />
-                <ItemCards price={}
+                {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}
                 itemPic={}
                 click={}               
-                />
-                <Modal show={this.state.itemModal}
+                /> */}
+                {/* <Modal show={this.state.itemModal}
                 modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={}
                     singlePicInfo={}
                     sizes={}/>
-                </Modal>
+                </Modal> */}
             </div>
         );
     }

@@ -69,18 +69,18 @@ class Accessories extends Component {
                     image={accesoriesImg}
                     title=' Accessories' />
                     {/* map out the results from the backend query and use this component to display, ItemName and ItemTitle are the same value */}
-                <ItemCards price={}
+                {/* <ItemCards price={}
                 ItemTitle={}
                 itemName={}
                 itemPic={}
                 click={}               
-                />
-                <Modal show={this.state.itemModal}
+                /> */}
+                {/* <Modal show={this.state.itemModal}
                 modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={}
                     singlePicInfo={}
                     sizes={}/>
-                </Modal>
+                </Modal> */}
 
             </div>
         );
