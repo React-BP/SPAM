@@ -53,9 +53,14 @@ class login extends Component {
       }
       console.log(formData);
 
-      axios.post('/api/login', formData).then(response => {
+      axios.post('/api/login', formData).then((response,err) => {
          console.log(response);
+        if(err){
+            alert("Could not login");
+        }
         alert("Successfully Logged In");
+        this.props.cancelModal();
+        this.props.logIn();
 
       }).catch(error => {
          console.log(error);

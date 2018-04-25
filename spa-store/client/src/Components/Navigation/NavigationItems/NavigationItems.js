@@ -5,12 +5,14 @@ import classes from "./NavItems.css";
 import Login from '../../Auth/Login/login';
 import Registration from "../../Auth/Registration/Registration";
 import Modal from '../../UI/Modal/modal';
+import login from './../../Auth/Login/login';
 
 
 class NavigationItems extends Component{   
     state = {
         modalLog: false,
-        modalReg: false
+        modalReg: false,
+        loggedIn: false
     }
 
     loginHandler = () => {
@@ -25,23 +27,42 @@ class NavigationItems extends Component{
     regCancelHandler = () => {
         this.setState({ modalReg: false });
     }
+    logIn=()=>{
+        this.setState({
+            loggedIn:true
+        })
+    }
+    logOut=()=>{
+        this.setState({
+            loggedIn: false
+        })
+    }
    
     render(){
         let logRegBtn =
             (
                 <div className={classes.logRegBtn}>
-                    <button onClick={this.loginHandler}>Login</button>
-                    <button onClick={this.registerHandler}>Register</button>
+                    <a onClick={this.loginHandler}>Login</a>
+                    <a onClick={this.registerHandler}>Register</a>
                 </div>
             )
+        if(this.state.loggedIn){
+             logRegBtn =(
+                <div className={classes.logRegBtn}>
+                    <a onClick={this.logOut}>Sign Out</a>
+                </div>
+            )
+        }
+        
         return (
             <div>
                 <ul className={classes.NavigationItems}>
                     <Modal show={this.state.modalLog} modalClosed={this.loginCancelHandler}>
-                        <Login />
+                        <Login cancelModal={this.loginCancelHandler}
+                                logIn={this.logIn}/>
                     </Modal>
                     <Modal show={this.state.modalReg} modalClosed={this.regCancelHandler}>
-                        <Registration />
+                        <Registration cancelModal={this.regCancelHandler}/>
                     </Modal>
 
                     <NavButton link='/' exact>Store</NavButton>

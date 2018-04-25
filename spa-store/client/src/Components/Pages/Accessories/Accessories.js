@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
-import Featured from '../../Feature/Feature';
 import accesoriesImg from '../../../Assets/Images/pipeline.jpg';
 import API from "../../../utils/API";
 import ItemCards from '../../ItemCards/ItemCards';
@@ -65,10 +64,10 @@ class Accessories extends Component {
     render() {
         return (
             <div className={classes.mainBox}>
-                <Filter />
                 <Header
                     image={accesoriesImg}
-                    title=' Accessories' />                    
+                    title=' Accessories' />     
+                <Filter />               
                 <div className={classes.ItemBox}>
                     {this.state.items.map(item => (
                         <ItemCards
