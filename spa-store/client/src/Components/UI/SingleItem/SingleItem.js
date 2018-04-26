@@ -1,8 +1,8 @@
-/**import React from 'react';
+import React from 'react';
 import classes from "./SingleItem.css";
 import Button from '../Button/button';
 
-const SingleItem = () => {
+const SingleItem = (props) => {
     const style={
         image:{
             height:250,
@@ -28,4 +28,4 @@ const SingleItem = () => {
     );
 };
 
-export default SingleItem;**/
+export default SingleItem;
