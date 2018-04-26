@@ -13,11 +13,6 @@ const SingleItem = (props) => {
 
     console.log('props is: ', props);
 
-    const orderHandler=()=>{
-
-        console.log("Order button works");
-    }
-
     return (
         <div className={classes.modalContent}>
             <div style={style.image}src={props.singleItemPic} alt={props.singlePicInfo}>
@@ -28,7 +23,7 @@ const SingleItem = (props) => {
             </div>
             <div className={classes.orderBox}>
                 <h1>DropDown: Quantity</h1>
-                <Button btnType='Order' clicked={this.orderHandler}>Order</Button>
+                <Button btnType='Order' clicked={props.orderHandler}>Order</Button>
             </div>
         </div>
     );
