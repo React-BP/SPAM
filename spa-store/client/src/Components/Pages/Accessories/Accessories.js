@@ -21,11 +21,20 @@ class Accessories extends Component {
     }
 
     modalHandler=(id)=>{
+        API.searchItem(id)
+            .then(res => {
 
-        this.setState({ itemModal: true });
-        this.loadItem(id);
-        
+                this.setState({
+                    featured: res.data
+                });
+
+                this.setState({ itemModal: true });
+                
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
     }
+
     modalCancelHandler=()=>{
         this.setState({
             featured: {},
@@ -55,20 +64,6 @@ class Accessories extends Component {
             });
     }
 
-    loadItem(id) {
-        API.searchItem(id)
-            .then(res => {
-                this.setState({
-                    featured: res.data
-                });
-                
-                console.log(this.state.itemModal);
-            }).catch(err => {
-                this.setState({ loading: false });
-            });
-    }
-
-
     render() {
         return (
             <div className={classes.mainBox}>
@@ -94,6 +89,9 @@ class Accessories extends Component {
                        modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={this.state.featured.image}
                         singlePicInfo={this.state.featured.name}
+                        singleItemName={this.state.featured.name}
+                        singleItemBrand={this.state.featured.brand}
+                        singleItemPrice={this.state.featured.price}
                         sizes={this.state.featured.sizes} />
                 </Modal>
 
