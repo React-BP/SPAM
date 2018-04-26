@@ -52,55 +52,71 @@ router.post('/api/register', (req,res)=>{
 router.post('/api/login', (req,res) =>{
    let name = req.body.username;
    console.log(name);
-   
-   newUser.findOne({username: name}).exec().then(user =>{
-      console.log(user);
-
-      if (user.length < 1) {
-         console.log("User is Invalid");
-
-         return res.status(403).json({
-            message: 'Auth Failed'
-         });
-      }
-      console.log(req.body.password);
-      console.log(user.password);
-      bcrypt.compare(req.body.password, user.password, (err, result) =>{
-         console.log("Started comparing passwords");
-         if (err) {
-            return res.status(403).json({
-               message: 'Auth failed'
-            });
-         }
-         if (result) {
-            const token = jwt.sign({
-               email: user.email,
-               manID: user.manager_U_id,
-               uID: user.user_U_id,
-               type: user.type,
-               username: user.username
-            }, process.env.JWT_Key,
-               //define the options
-               {
-                  expiresIn: "4h"
-               }
-            );
-            console.log("token created");
-            return res.status(200).json({
-               message: 'Auth successful',
-               token: token,
-               authTok: user.manager_U_id,
-               userType: user.type,
-               userId: user.user_U_id
-            });
-            // window.location('/home');
-         }
-
+   if(!name || !req.body.password){
+      res.json({
+         success: false,
+         message:"Username and password required",
+         data:{}
       });
-   }).catch(err => {
-      console.log(err.result);
-   });
-});
+      return;
+   }
+   console.log('attempting login. username: ', name);
+   newUser.findOne({username: name}).exec().then((user,err) =>{
+      console.log(user);
+      if(err){
+         res.status(204);
+         res.json({
+            success:false,
+            message:"Error occured while checking if user exists",
+            data:{
+               'error':err
+            }
+         });
+      }      
+      if (user) { 
+         bcrypt.compare(req.body.password, user.password, (isMatch, err)=>{
+            console.log("compare password");
+            if(err){
+               console.log("error: ",err);
+               res.json({
+                  success:false,
+                  message:"Error occured while checking if the user exists",
+                  data:{
+                     "error": err
+                  }
+               });
+               return;
+            }
+            if(isMatch){
+               var token = jwt.sign({
+                  "id": user._id,
+                  "email":user.email
+               },
+               config.jwt.secret,{
+                  expiresIn: 1440*1260*3600 //expires in 24 hr
+               });
+               console.log("Token is created");
+               res.json({
+                  "token":token,
+                  "token_for":req.body.username
+               });
+            }
+            else{
+               console.log("did not go to token creation");
+               res.status(204);
+               res.json({
+                  "message":"Incorrect password"
+               });
+            }
+         });      
+      }else{
+         res.status(200);
+         res.json({
+            "message":"No username found"
+         });
+      }     
+   });  
+}); 
 
 //Route to logout.
 router.post('/logout', function (req, res) {

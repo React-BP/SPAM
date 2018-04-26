@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Filter from "../../UI/Filter/Filter";
 import Header from './../../Header/Header';
 import wetImg from '../../../Assets/Images/wetsuit.jpg';
-import Featured from '../../Feature/Feature';
 import API from "../../../utils/API";
 import Sort from "../../../utils/Sort";
 import ItemCards from '../../ItemCards/ItemCards';
@@ -23,6 +22,8 @@ class Wetsuits extends Component {
     }
     modalHandler = () => {
         this.setState({ itemModal: true });
+        // this.loadItem(id);
+        console.log(this.state.featured);
     }
     modalCancelHandler = () => {
         this.setState({ itemModal: false });
@@ -64,10 +65,10 @@ class Wetsuits extends Component {
     render() {
         return (
             <div className={classes.mainBox}>
-                <Filter />
                 <Header
                     image={wetImg}
                     title='Wetsuits' />
+                <Filter />
                 <div className={classes.ItemBox}>
                     {this.state.items.map(item => (
                         <ItemCards
