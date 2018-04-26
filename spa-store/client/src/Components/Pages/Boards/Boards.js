@@ -19,11 +19,25 @@ class Boards extends Component {
     componentDidMount() {
         this.loadBoards();
     }
-    modalHandler = () => {
-        this.setState({ itemModal: true });
+
+    modalHandler = (id) => {
+        API.searchItem(id)
+            .then(res => {
+                this.setState({
+                    featured: res.data
+                });
+
+                this.setState({ itemModal: true });
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
     }
+
     modalCancelHandler = () => {
-        this.setState({ itemModal: false });
+        this.setState({
+            featured: {},
+            itemModal: false
+        });
     }
 
     loadBoards(){
@@ -47,17 +61,6 @@ class Boards extends Component {
                this.setState({ loading: false });
            });
     }
-
-    loadItem(id) {
-        API.searchItem(id)
-            .then(res => {
-                this.setState({
-                    featured: res.data
-                });
-            }).catch(err => {
-                this.setState({ loading: false });
-            })
-    }
     
     render() {
         return (
@@ -77,7 +80,7 @@ class Boards extends Component {
                             itemPic={item.image}
                             brand={item.brand}
                             gender={item.gender}
-                            click={this.modalHandler}
+                            click={() => this.modalHandler(item._id)}
                         />
                     ))}
                 </div>
@@ -85,6 +88,9 @@ class Boards extends Component {
                     modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={this.state.featured.image}
                         singlePicInfo={this.state.featured.name}
+                        singleItemName={this.state.featured.name}
+                        singleItemBrand={this.state.featured.brand}
+                        singleItemPrice={this.state.featured.price}
                         sizes={this.state.featured.sizes} />
                 </Modal>
 
