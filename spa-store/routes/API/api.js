@@ -10,13 +10,4 @@ router.route("/store/:type")
 router.route("/:id")
     .get(modelController.findItem);
 
-//router.route("/store/:type/gender")
-  //  .get(modelController.findItemsByGender);
-
-//router.route("/store/:type/sort")
-   // .get(modelController.findSortedItems);
-
-//router.route("/store/:type/gender/sort")
-  //  .get(modelController.findSortedItemsByGender);
-
 module.exports = router;

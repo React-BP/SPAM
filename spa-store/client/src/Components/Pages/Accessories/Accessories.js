@@ -20,11 +20,17 @@ class Accessories extends Component {
         this.loadAccessories();
     }
 
-    modalHandler=()=>{
-        this.setState({itemModal:true});
+    modalHandler=(id)=>{
+
+        this.setState({ itemModal: true });
+        this.loadItem(id);
+        
     }
     modalCancelHandler=()=>{
-        this.setState({itemModal:false});
+        this.setState({
+            featured: {},
+            itemModal:false
+        });
     }
 
     loadAccessories(){
@@ -55,9 +61,11 @@ class Accessories extends Component {
                 this.setState({
                     featured: res.data
                 });
+                
+                console.log(this.state.itemModal);
             }).catch(err => {
                 this.setState({ loading: false });
-            })
+            });
     }
 
 
@@ -78,12 +86,12 @@ class Accessories extends Component {
                             itemPic={item.image}
                             brand={item.brand}
                             gender={item.gender}
-                            click={this.modalHandler}
+                            click={() => this.modalHandler(item._id)}
                         />
                     ))}
                 </div>
                 <Modal show={this.state.itemModal}
-                    modalClosed={this.modalCancelHandler}>
+                       modalClosed={this.modalCancelHandler}>
                     <SingleItem singleItemPic={this.state.featured.image}
                         singlePicInfo={this.state.featured.name}
                         sizes={this.state.featured.sizes} />

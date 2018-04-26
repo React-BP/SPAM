@@ -11,7 +11,7 @@ module.exports = {
     findItem: function(req, res){
         db.Item.findById(req.params.id)
             .then((item) => {res.json(item);})
-               .catch(err => res.status(422).json(err));
+            .catch(err => res.status(422).json(err));
         
     },
     findItems: function(req, res){
