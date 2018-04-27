@@ -10,6 +10,7 @@ import SingleItem from '../../UI/SingleItem/SingleItem';
 import classes from './wetsuits.css';
 
 class Wetsuits extends Component {
+
     state = {
         items: [],
         loading: true,
@@ -18,7 +19,8 @@ class Wetsuits extends Component {
     };
 
     componentDidMount() {
-        this.loadWetsuits()
+        this.loadWetsuits();
+        console.log('props is:', this.props.cart);
     }
 
     modalHandler = (id) => {
@@ -102,7 +104,9 @@ class Wetsuits extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured.sizes} />
+                        sizes={this.state.featured.sizes} 
+                        orderHandler={this.props.cart}
+                        />
                 </Modal>
 
             </div>
