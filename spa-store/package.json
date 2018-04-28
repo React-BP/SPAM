@@ -1,6 +1,6 @@
 {
   "name": "spa-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
   "main": "index.js",
   "dependencies": {
@@ -39,5 +39,7 @@
   "bugs": {
     "url": "https://github.com/React-BP/SPA-store/issues"
   },
-  "homepage": "https://github.com/React-BP/SPA-store#readme"
+  "homepage": "https://github.com/React-BP/SPA-store#readme","files":[
+    "*" 
+  ]
 }
