@@ -1,5 +1,8 @@
 {
     "ignore":[
         "client/*"
-    ]
+    ],
+    "env":{
+        "JWT_KEY":"Pqiv6ILVRoQw7TuPsfzuySl7lA7zbYAffHF2wcV0EpbR5ck7CgEnaTStwOneON1"
+    }
 }
