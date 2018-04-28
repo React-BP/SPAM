@@ -5,7 +5,6 @@ import classes from "./NavItems.css";
 import Login from '../../Auth/Login/login';
 import Registration from "../../Auth/Registration/Registration";
 import Modal from '../../UI/Modal/modal';
-import login from './../../Auth/Login/login';
 
 
 class NavigationItems extends Component{   
@@ -36,6 +35,7 @@ class NavigationItems extends Component{
         this.setState({
             loggedIn: false
         })
+
     }
    
     render(){
@@ -48,7 +48,8 @@ class NavigationItems extends Component{
             )
         if(this.state.loggedIn){
              logRegBtn =(
-                <div className={classes.logRegBtn}>
+                 <div className={classes.logRegBtn}> 
+                    <NavButton link='/store/checkout' exact>Checkout</NavButton>
                     <a onClick={this.logOut}>Sign Out</a>
                 </div>
             )
@@ -70,12 +71,8 @@ class NavigationItems extends Component{
                     <NavButton link='/store/boards' exact>Boards</NavButton>
                     <NavButton link='/store/clothing' exact>Clothing</NavButton>
                     <NavButton link='/store/accessories' exact>Accessories</NavButton>
-                        {logRegBtn}
-
-                    {/* <NavButton link='/store/login' exact></NavButton>
-                    <NavButton link='/store/logout'></NavButton> */}
-                    <NavButton link='/store/signup' exact></NavButton>
-                    <NavButton link='/store/checkout'></NavButton>
+                        {logRegBtn}                    
+                   
                 </ul>
             </div>
         );

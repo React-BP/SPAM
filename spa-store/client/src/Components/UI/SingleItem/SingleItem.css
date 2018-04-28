@@ -1,14 +1,21 @@
 .orderBox{
-    width: 250px;
-    height: 200px;
+    width: 60%;
+    height: 350px;
     box-sizing: border-box;
     box-shadow: 1px 1px black;
     color: black;
     background-color: beige;
+    padding: 25px;
+    margin-left: 10%;
 }
 .modalContent{
     width: 90%;
     padding: 20px;
     display: flex;
-    flex-direction: column;
+    display: inline-flex;
+}
+.radioBtn{
+    flex-flow: column;
+    padding-left: 20px;
+    justify-content: space-between
 }

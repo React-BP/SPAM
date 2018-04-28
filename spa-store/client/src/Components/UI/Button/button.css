@@ -24,9 +24,19 @@
 }
 .View{
     color: aqua;
+    margin-top: -35px !important;
 }
 .Order{
-    color: yellow;
+    background-color: rgb(9, 9, 98) !important;
+    margin-left: 15% !important;
+    color: white !important;
+    width: 200px !important;
+    border-radius: 10px !important;
+    box-shadow: 5px 5px 5px rgba(34, 32, 32, 0.3) !important;
+}
+.Order:hover{
+    background-color: white !important;
+    color: rgb(9, 9, 98) !important;
 }
 .Button:disabled{
     color: #ccc;

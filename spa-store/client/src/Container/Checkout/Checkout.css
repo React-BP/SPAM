@@ -1,0 +1,23 @@
+.checkOutBox{
+   grid-row: 1/16;
+   grid-column: 3/9;
+   background-color: blanchedalmond;
+   box-sizing: border-box;
+   border:solid 1px black;
+   box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+   display: flex;
+   flex-wrap: wrap;
+}
+.orderBox{
+   box-sizing: border-box;
+   border: 1px solid black;
+   width: 200px;
+   height: 200px;
+   box-shadow: 4px 4px 4px rgba(0, 0, 0, .4);
+   background-color: tan;
+   margin: 20px;
+}
+p{
+   color: black;
+   font-family: 'Times New Roman', Times, serif;   
+}
