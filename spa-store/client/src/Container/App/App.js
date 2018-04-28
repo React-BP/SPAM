@@ -8,11 +8,24 @@ import Wetsuits from "../../Components/Pages/Wetsuits/Wetsuits";
 import Boards from "../../Components/Pages/Boards/Boards";
 import Clothing from "../../Components/Pages/Clothing/Clothing";
 import Accessories from "../../Components/Pages/Accessories/Accessories";
-
+import Checkout from "../Checkout/Checkout";
 class App extends Component {
 
   state = {
-    orders: []
+    orders: [
+      {
+        name: "name",
+        brand:"brand",
+        pic: "pic",
+        price:"price"
+    },
+    {
+      name: "name2",
+      brand: "brand2",
+      pic: "pic2",
+      price: "price2"
+    }
+    ]
   };
 
   orderHandler(){
@@ -33,6 +46,7 @@ class App extends Component {
             <Route exact path="/store/boards" render={(props) => <Boards {...props} cart={this.orderHandler} />} />
             <Route exact path="/store/clothing" render={(props) => <Clothing {...props} cart={this.orderHandler} />} />
             <Route exact path="/store/accessories" render={(props) => <Accessories {...props} cart={this.orderHandler} />} />
+            <Route exact path="/store/checkout" render={(props) => <Checkout {...props} cart={this.orderHandler} orders={this.state.orders}/>} />
             <Route exact path="/store/logout" />
           </Switch>
         </Layout>

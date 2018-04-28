@@ -48,7 +48,8 @@ class NavigationItems extends Component{
             )
         if(this.state.loggedIn){
              logRegBtn =(
-                <div className={classes.logRegBtn}>
+                 <div className={classes.logRegBtn}> 
+                    <NavButton link='/store/checkout' exact>Checkout</NavButton>
                     <a onClick={this.logOut}>Sign Out</a>
                 </div>
             )
@@ -70,7 +71,6 @@ class NavigationItems extends Component{
                     <NavButton link='/store/boards' exact>Boards</NavButton>
                     <NavButton link='/store/clothing' exact>Clothing</NavButton>
                     <NavButton link='/store/accessories' exact>Accessories</NavButton>
-                    <NavButton link='/store/checkout'></NavButton>
                         {logRegBtn}                    
                    
                 </ul>

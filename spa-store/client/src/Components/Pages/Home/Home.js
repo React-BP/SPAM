@@ -21,9 +21,19 @@ class Home extends Component {
     componentDidMount() {
         this.loadFeatured();
     }
-    modalHandler = () => {
-        this.setState({ itemModal: true });
+    modalHandler = (id) => {
+        API.searchItem(id)
+            .then(res => {
+                this.setState({
+                    featured: res.data
+                });
+
+                this.setState({ itemModal: true });
+            }).catch(err => {
+                this.setState({ loading: false });
+            });
     }
+
     modalCancelHandler = () => {
         this.setState({ itemModal: false });
     }
@@ -80,13 +90,18 @@ class Home extends Component {
                             price={item.price}
                             brand={item.brand}
                             gender={item.gender}
-                            click={this.modalHandler}/>
+                            click={() => this.modalHandler(item._id)}
+                        />
                     ))}
                     <Modal show={this.state.itemModal}
                         modalClosed={this.modalCancelHandler}>
                         <SingleItem singleItemPic={this.state.featured.image}
                             singlePicInfo={this.state.featured.name}
-                            sizes={this.state.featured.sizes} />
+                            singleItemName={this.state.featured.name}
+                            singleItemBrand={this.state.featured.brand}
+                            singleItemPrice={this.state.featured.price}
+                            sizes={this.state.featured.sizes} 
+                            orderHandler={this.props.cart}/>
                     </Modal>
                 </div>
                 <Footer/>
