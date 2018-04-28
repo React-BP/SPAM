@@ -73,9 +73,12 @@ router.post('/api/login', (req,res) =>{
             }
          });
       }      
+      console.log(req.body.password);
+      console.log(user.password);
       if (user) { 
-         bcrypt.compare(req.body.password, user.password, (isMatch, err)=>{
+         bcrypt.compare(req.body.password, user.password, (err,response)=>{
             console.log("compare password");
+            console.log(response);
             if(err){
                console.log("error: ",err);
                res.json({
@@ -87,18 +90,19 @@ router.post('/api/login', (req,res) =>{
                });
                return;
             }
-            if(isMatch){
-               var token = jwt.sign({
-                  "id": user._id,
-                  "email":user.email
-               },
-               config.jwt.secret,{
-                  expiresIn: 1440*1260*3600 //expires in 24 hr
-               });
-               console.log("Token is created");
+            if(response){
+               // var token = jwt.sign({
+               //    "id": user._id,
+               //    "email":user.email
+               // },
+               // config.jwt.secret,{
+               //    expiresIn: 1440*1260*3600 //expires in 24 hr
+               // });
+               // console.log("Token is created");
                res.json({
-                  "token":token,
-                  "token_for":req.body.username
+                  "userID":user._id
+                  // "token":token,
+                  // "token_for":req.body.username
                });
             }
             else{
