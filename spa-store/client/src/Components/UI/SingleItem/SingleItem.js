@@ -51,8 +51,8 @@ class SingleItem extends Component {
         console.log(price);
         alert(`Quantity Value: ${this.state.quantity}  Size Value: ${this.state.size} `);
         const id = localStorage.getItem('user');
-
-        if (this.state.cart.length === 0) {
+        console.log(id);
+        if (Object.keys(this.state.cart).length === 0) {
 
             const toAdd = [];
             toAdd.push(this.state.item);
@@ -62,8 +62,10 @@ class SingleItem extends Component {
                 totalPrice: this.state.item.price,
                 paid: false
             }
+            
+            console.log('order is:', order);
 
-            API.createOrder(id, order.toString())
+            API.createOrder(id, order)
                 .then((res) => {
                     this.setState({
                         cart: res.data,
@@ -75,7 +77,7 @@ class SingleItem extends Component {
 
            const cart = this.state.cart.items;
             cart.push(this.state.item);                
-            API.updateOrder(id, this.state.cart.toString())
+            API.updateOrder(this.state.cart._id, this.state.cart)
                 .then((res) => {
                     this.setState({
                         cart: res.data,

@@ -8,7 +8,7 @@ router.route("/store/:type")
     .get(modelController.findItems);
 
 router.route("/user/:id")
-    .get(modelController.findOrder);
+    .post(modelController.findOrder);
 
 router.route("/cart/:id")
     .get(modelController.findOrderById)

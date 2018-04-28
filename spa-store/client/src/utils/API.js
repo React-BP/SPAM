@@ -16,7 +16,7 @@ export default {
         return axios.put("/api/store/" + query, item);
     },
     createOrder: (query, item) => {
-        return axios.post("/api/" + query, item);
+        return axios.post("/user/" + query, item);
     },
     searchOrder: (query) => {
         return axios.get("/user/" + query);

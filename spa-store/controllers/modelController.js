@@ -48,7 +48,8 @@ module.exports = {
                 .catch(err => res.status(422).json(err));
     },
     createOrder: function(req, res){
-        db.Order.create(JSON.parse(req.data.item))
+        console.log('req: ', req);
+        db.Order.create(req.data)
                 .then((order) => res.json(order))
                 .catch(err => res.status(422).json(err));
     },
