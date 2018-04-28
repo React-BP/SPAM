@@ -1,5 +1,5 @@
 ![React](./public/favicon.ico)
-# SPA : Single Page App
+# SPAM : Single Page App Webstore with MongoDB
 ##### Brought to you by Team React BP
 
 This is a React boilerplate single page responsive portfolio app. There are a ton of components you can use to build your own custom app. This package is bootstrapped with [Creat React App](https://github.com/facebook/create-react-app/blob/next/README.md). It utilizes CSS Grid and has components that are completely customizeable, includes a mongoDB connection to store the info of your webstore items. We also have  a seed file which when run will allow you to seed the DB with our information to properly display the application.

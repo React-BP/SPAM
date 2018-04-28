@@ -1,6 +1,6 @@
 {
   "name": "spam-store",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
   "main": "index.js",
   "dependencies": {
