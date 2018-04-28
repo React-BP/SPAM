@@ -15,13 +15,6 @@
   "bugs": {
     "url": "https://github.com/React-BP/SPAM-store/issues"
   },
-  "homepage": "https://github.com/React-BP/SPAM-store#readme",
-  "files": [
-    "spa-store/client/",
-    "spa-store/controllers/",
-    "spa-store/models/",
-    "spa-store/routes/",
-    "spa-store/scripts/",
-    "README.md"
-  ]
+  "homepage": "https://github.com/React-BP/SPAM-store#readme"
+ 
 }
