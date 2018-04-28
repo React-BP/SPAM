@@ -37,7 +37,7 @@ module.exports = {
         console.log('finding order');
         db.Order.find()
                 .where('user')
-                .equals(req.data.id)
+                .equals(req.params.id)
                 .then((order) => res.json(order))
                 .catch(err => res.status(422).json(err));
     },
@@ -48,7 +48,6 @@ module.exports = {
                 .catch(err => res.status(422).json(err));
     },
     createOrder: function(req, res){
-        
         db.Order.create(JSON.parse(req.data.item))
                 .then((order) => res.json(order))
                 .catch(err => res.status(422).json(err));
@@ -56,6 +55,8 @@ module.exports = {
     updateOrder: function(req, res){
         console.log('id is: ', req.params.id);
         db.Order.findByIdAndUpdate(req.params.id, JSON.parse(req.data.order))
-            .then((order) => res.json(order))
+            .then((order) => {
+                res.json(order);
+            })
     }
 }

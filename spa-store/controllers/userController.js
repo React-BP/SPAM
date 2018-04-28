@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const newUser = require('../models/users');
 
-router.post('/api/register', (req,res)=>{
+router.post('/register', (req,res)=>{
    console.log(req.body);
    console.log(req.body.name);
    bcrypt.genSalt(6, (err,salt)=>{
@@ -49,7 +49,7 @@ router.post('/api/register', (req,res)=>{
 });
 
 
-router.post('/api/login', (req,res) =>{
+router.post('/login', (req,res) =>{
    let name = req.body.username;
    console.log(name);
    if(!name || !req.body.password){

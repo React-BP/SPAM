@@ -53,7 +53,7 @@ class login extends Component {
       }
       console.log(formData);
 
-      axios.post('/api/login', formData).then((response,err) => {
+      axios.post('/login', formData).then((response,err) => {
         console.log(response);
         if(err){
             alert("Could not login");

@@ -15,12 +15,15 @@ class Home extends Component {
         items: [],
         loading: true,
         featured: {},
-        itemModal:false
+        itemModal:false,
+        cart: {}
     }
 
     componentDidMount() {
         this.loadFeatured();
+        this.loadCart(localStorage.getItem('user'));
     }
+
     modalHandler = (id) => {
         API.searchItem(id)
             .then(res => {
@@ -54,8 +57,6 @@ class Home extends Component {
                    items: fetched
                });
 
-              // console.log("items is: ", this.state.items);
-
            }).catch(err => {
                this.setState({loading: false});
            });
@@ -70,6 +71,24 @@ class Home extends Component {
            }).catch(err => {
                this.setState({loading: false});
            })
+    }
+
+    loadCart(userID) {
+        API.searchOrder(userID)
+            .then(res => {
+
+                this.setState({
+                    cart: res.data
+                });
+
+            }).catch(err => {
+
+                this.setState({
+                    cart: {}
+                });
+
+            });
+
     }
 
     render(){    
@@ -101,7 +120,8 @@ class Home extends Component {
                             singleItemBrand={this.state.featured.brand}
                             singleItemPrice={this.state.featured.price}
                             sizes={this.state.featured.sizes} 
-                            orderHandler={this.props.cart}/>
+                            item={this.state.featured}
+                            cart={this.state.cart}/>
                     </Modal>
                 </div>
                 <Footer/>

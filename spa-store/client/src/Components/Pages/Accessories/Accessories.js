@@ -13,11 +13,13 @@ class Accessories extends Component {
         items: [],
         loading: false,
         featured: {},
-        itemModal: false
+        itemModal: false,
+        cart: {}
     };
 
     componentDidMount() {
         this.loadAccessories();
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler=(id)=>{
@@ -64,6 +66,19 @@ class Accessories extends Component {
             });
     }
 
+    loadCart(userID) {
+        API.searchOrder(userID)
+            .then(res => {
+                this.setState({
+                    cart: res.data
+                });
+            }).catch(err => {
+                this.setState({
+                    cart: {}
+                });
+            });
+    }
+
     render() {
         return (
             <div className={classes.mainBox}>
@@ -92,7 +107,9 @@ class Accessories extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured.sizes} />
+                        sizes={this.state.featured._id} 
+                        item={this.state.featured}
+                        cart={this.state.cart} />
                 </Modal>
 
 

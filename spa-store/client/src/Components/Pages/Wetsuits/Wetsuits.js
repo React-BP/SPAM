@@ -16,12 +16,12 @@ class Wetsuits extends Component {
         loading: true,
         featured:{},
         itemModal: false,
-        cart: []
+        cart: {}
     };
 
     componentDidMount() {
         this.loadWetsuits();
-        this.loadCart();
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler = (id) => {
@@ -42,31 +42,6 @@ class Wetsuits extends Component {
             featured: {},
             itemModal: false
         });
-    }
-
-    orderHandler = (id) => {
-        
-        if(this.state.cart.length === 0){
-            API.createOrder(id, this.state.featured.toString())
-               .then((res) => {
-                   this.setState({
-                       cart: res.data,
-                       itemModal: false
-                   });
-               });
-        }
-        else{
-
-            var cart = this.state.cart;
-            cart.push(this.state.featured);
-            API.updateOrder(id, this.state.cart.toString())
-               .then((res) => {
-                   this.setState({
-                       cart: res.data,
-                       itemModal: false
-                   });
-               });
-        }
     }
 
     loadWetsuits(){
@@ -108,6 +83,10 @@ class Wetsuits extends Component {
                this.setState({
                    cart: res.data
                });
+           }).catch(err => {
+               this.setState({
+                   cart: {}
+               });
            });
     }
 
@@ -140,8 +119,8 @@ class Wetsuits extends Component {
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
                         sizes={this.state.featured.sizes} 
-                        orderHandler={this.props.cart}
-                        />
+                        item={this.state.featured}
+                        cart={this.state.cart} />
                 </Modal>
 
             </div>
