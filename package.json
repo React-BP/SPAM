@@ -1,6 +1,6 @@
 {
   "name": "spam-store",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React boilerplate single page app using mongoose/mongoDB as database",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/React-BP/SPAM-store#readme",
   "files": [
-    "spa-store",
+    "spa-store/client/",
+    "spa-store/controllers/",
+    "spa-store/models/",
+    "spa-store/routes/",
+    "spa-store/scripts/",
     "README.md"
   ]
 }
