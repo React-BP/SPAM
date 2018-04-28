@@ -29,7 +29,8 @@ class SingleItem extends Component {
     }
     orderHandler(event){
         event.preventDefault();
-        
+        const price = document.querySelector(".PriceVal").textContent;
+        console.log(price);
         alert(`Quantity Value: ${this.state.quantity}  Size Value: ${this.state.size} `);
     }
     
@@ -86,7 +87,7 @@ class SingleItem extends Component {
                                         onChange={this.handleRadio} />                              
                             </div>                      
                     </form>
-                    <h1 className="PriceVal">Price: ${this.props.singleItemPrice}</h1>
+                    <h1>Price: <span className="PriceVal">${this.props.singleItemPrice}</span></h1>
                     <Button btnType='Order' clicked={this.orderHandler}>Order</Button>
                 </div>
             </div>
