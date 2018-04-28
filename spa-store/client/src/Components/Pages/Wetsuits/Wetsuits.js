@@ -16,12 +16,12 @@ class Wetsuits extends Component {
         loading: true,
         featured:{},
         itemModal: false,
-        cart: []
+        cart: {}
     };
 
     componentDidMount() {
         this.loadWetsuits();
-        this.loadCart();
+        this.loadCart('USERID');
     }
 
     modalHandler = (id) => {
@@ -47,7 +47,18 @@ class Wetsuits extends Component {
     orderHandler = (id) => {
         
         if(this.state.cart.length === 0){
-            API.createOrder(id, this.state.featured.toString())
+
+            const toAdd = [];
+            toAdd.push(this.state.featured);
+
+            const order = {
+                user: id,
+                items: toAdd,
+                totalPrice: this.state.featured.price,
+                paid: false
+            }
+
+            API.createOrder(id, order.toString())
                .then((res) => {
                    this.setState({
                        cart: res.data,
@@ -57,7 +68,7 @@ class Wetsuits extends Component {
         }
         else{
 
-            var cart = this.state.cart;
+            const cart = this.state.cart.items;
             cart.push(this.state.featured);
             API.updateOrder(id, this.state.cart.toString())
                .then((res) => {
@@ -108,6 +119,10 @@ class Wetsuits extends Component {
                this.setState({
                    cart: res.data
                });
+           }).catch(err => {
+               this.setState({
+                   cart: {}
+               });
            });
     }
 
@@ -140,7 +155,7 @@ class Wetsuits extends Component {
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
                         sizes={this.state.featured.sizes} 
-                        orderHandler={this.props.cart}
+                        orderHandler={this.state.featured._id}
                         />
                 </Modal>
 

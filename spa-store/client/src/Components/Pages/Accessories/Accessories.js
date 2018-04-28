@@ -13,11 +13,13 @@ class Accessories extends Component {
         items: [],
         loading: false,
         featured: {},
-        itemModal: false
+        itemModal: false,
+        cart: {}
     };
 
     componentDidMount() {
         this.loadAccessories();
+        this.loadCart('USERID');
     }
 
     modalHandler=(id)=>{
@@ -42,6 +44,42 @@ class Accessories extends Component {
         });
     }
 
+    orderHandler = (id) => {
+
+        if (this.state.cart.length === 0) {
+
+            const toAdd = [];
+            toAdd.push(this.state.featured);
+
+            const order = {
+                user: id,
+                items: toAdd,
+                totalPrice: this.state.featured.price,
+                paid: false
+            }
+
+            API.createOrder(id, order.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+        else {
+
+            const cart = this.state.cart.items;
+            cart.push(this.state.featured);
+            API.updateOrder(id, this.state.cart.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+    }
+
     loadAccessories(){
         API.searchItems('accessories')
             .then(res => {
@@ -61,6 +99,19 @@ class Accessories extends Component {
 
             }).catch(err => {
                 this.setState({ loading: false });
+            });
+    }
+
+    loadCart(userID) {
+        API.searchOrder(userID)
+            .then(res => {
+                this.setState({
+                    cart: res.data
+                });
+            }).catch(err => {
+                this.setState({
+                    cart: {}
+                });
             });
     }
 
@@ -92,7 +143,7 @@ class Accessories extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured.sizes} />
+                        sizes={this.state.featured._id} />
                 </Modal>
 
 

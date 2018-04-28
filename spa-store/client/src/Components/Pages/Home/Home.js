@@ -15,12 +15,15 @@ class Home extends Component {
         items: [],
         loading: true,
         featured: {},
-        itemModal:false
+        itemModal:false,
+        cart: {}
     }
 
     componentDidMount() {
         this.loadFeatured();
+        this.loadCart('USER ID');
     }
+
     modalHandler = (id) => {
         API.searchItem(id)
             .then(res => {
@@ -36,6 +39,42 @@ class Home extends Component {
 
     modalCancelHandler = () => {
         this.setState({ itemModal: false });
+    }
+
+    orderHandler = (id) => {
+
+        if (this.state.cart.length === 0) {
+
+            const toAdd = [];
+            toAdd.push(this.state.featured);
+
+            const order = {
+                user: id,
+                items: toAdd,
+                totalPrice: this.state.featured.price,
+                paid: false
+            }
+
+            API.createOrder(id, order.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+        else {
+
+            const cart = this.state.cart.items;
+            cart.push(this.state.featured);
+            API.updateOrder(id, this.state.cart.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
     }
     
     loadFeatured(){
@@ -72,6 +111,22 @@ class Home extends Component {
            })
     }
 
+    loadCart(userID) {
+        API.searchOrder(userID)
+            .then(res => {
+                this.setState({
+                    cart: res.data
+                });
+                console.log('HERE cart is: ', this.state.cart);
+            }).catch(err => {
+                this.setState({
+                    cart: {}
+                });
+                console.log('cart is: ', this.state.cart);
+            });
+
+    }
+
     render(){    
         
         return(
@@ -101,7 +156,7 @@ class Home extends Component {
                             singleItemBrand={this.state.featured.brand}
                             singleItemPrice={this.state.featured.price}
                             sizes={this.state.featured.sizes} 
-                            orderHandler={this.props.cart}/>
+                            orderHandler={this.state.featured._id}/>
                     </Modal>
                 </div>
                 <Footer/>

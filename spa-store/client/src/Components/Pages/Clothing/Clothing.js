@@ -14,11 +14,13 @@ class Clothing extends Component {
         items: [],
         loading: true,
         featured: {},
-        itemModal: false
+        itemModal: false,
+        cart: {}
     };
 
     componentDidMount() {
         this.loadClothing();
+        this.loadCart('USER ID');
     }
 
     modalHandler = (id) => {
@@ -41,6 +43,42 @@ class Clothing extends Component {
         });
     }
 
+    orderHandler = (id) => {
+
+        if (this.state.cart.length === 0) {
+
+            const toAdd = [];
+            toAdd.push(this.state.featured);
+
+            const order = {
+                user: id,
+                items: toAdd,
+                totalPrice: this.state.featured.price,
+                paid: false
+            }
+
+            API.createOrder(id, order.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+        else {
+
+            const cart = this.state.cart.items;
+            cart.push(this.state.featured);
+            API.updateOrder(id, this.state.cart.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+    }
+
     loadClothing(){
         API.searchItems('clothing')
             .then(res => {
@@ -60,6 +98,19 @@ class Clothing extends Component {
 
             }).catch(err => {
                 this.setState({ loading: false });
+            });
+    }
+
+    loadCart(userID) {
+        API.searchOrder(userID)
+            .then(res => {
+                this.setState({
+                    cart: res.data
+                });
+            }).catch(err => {
+                this.setState({
+                    cart: {}
+                });
             });
     }
     
@@ -91,7 +142,7 @@ class Clothing extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured.sizes} />
+                        sizes={this.state.featured._id} />
                 </Modal>
                 <Footer/>
             </div>
