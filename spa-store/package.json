@@ -1,6 +1,6 @@
 {
   "name": "spa-store",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
   "main": "index.js",
   "dependencies": {
