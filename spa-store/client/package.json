@@ -1,7 +1,7 @@
 {
   "name": "spa-store",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "dependencies": {
     "async": "^2.6.0",
     "autoprefixer": "7.1.6",
