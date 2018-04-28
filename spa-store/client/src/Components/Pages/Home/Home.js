@@ -21,7 +21,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.loadFeatured();
-        this.loadCart('USER ID');
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler = (id) => {
@@ -40,42 +40,6 @@ class Home extends Component {
     modalCancelHandler = () => {
         this.setState({ itemModal: false });
     }
-
-    orderHandler = (id) => {
-
-        if (this.state.cart.length === 0) {
-
-            const toAdd = [];
-            toAdd.push(this.state.featured);
-
-            const order = {
-                user: id,
-                items: toAdd,
-                totalPrice: this.state.featured.price,
-                paid: false
-            }
-
-            API.createOrder(id, order.toString())
-                .then((res) => {
-                    this.setState({
-                        cart: res.data,
-                        itemModal: false
-                    });
-                });
-        }
-        else {
-
-            const cart = this.state.cart.items;
-            cart.push(this.state.featured);
-            API.updateOrder(id, this.state.cart.toString())
-                .then((res) => {
-                    this.setState({
-                        cart: res.data,
-                        itemModal: false
-                    });
-                });
-        }
-    }
     
     loadFeatured(){
         API.searchFeatured()
@@ -92,8 +56,6 @@ class Home extends Component {
                    loading: false,
                    items: fetched
                });
-
-              // console.log("items is: ", this.state.items);
 
            }).catch(err => {
                this.setState({loading: false});
@@ -114,15 +76,17 @@ class Home extends Component {
     loadCart(userID) {
         API.searchOrder(userID)
             .then(res => {
+
                 this.setState({
                     cart: res.data
                 });
-                console.log('HERE cart is: ', this.state.cart);
+
             }).catch(err => {
+
                 this.setState({
                     cart: {}
                 });
-                console.log('cart is: ', this.state.cart);
+
             });
 
     }
@@ -156,7 +120,8 @@ class Home extends Component {
                             singleItemBrand={this.state.featured.brand}
                             singleItemPrice={this.state.featured.price}
                             sizes={this.state.featured.sizes} 
-                            orderHandler={this.state.featured._id}/>
+                            item={this.state.featured}
+                            cart={this.state.cart}/>
                     </Modal>
                 </div>
                 <Footer/>

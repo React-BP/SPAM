@@ -20,7 +20,7 @@ class Clothing extends Component {
 
     componentDidMount() {
         this.loadClothing();
-        this.loadCart('USER ID');
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler = (id) => {
@@ -69,6 +69,7 @@ class Clothing extends Component {
 
             const cart = this.state.cart.items;
             cart.push(this.state.featured);
+            cart.totalPrice = cart.totalPrice + this.state.featured.price;
             API.updateOrder(id, this.state.cart.toString())
                 .then((res) => {
                     this.setState({
@@ -142,7 +143,9 @@ class Clothing extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured._id} />
+                        sizes={this.state.featured._id} 
+                        item={this.state.featured}
+                        cart={this.state.cart} />
                 </Modal>
                 <Footer/>
             </div>

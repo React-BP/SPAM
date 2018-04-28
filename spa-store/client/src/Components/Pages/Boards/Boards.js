@@ -19,7 +19,7 @@ class Boards extends Component {
 
     componentDidMount() {
         this.loadBoards();
-        this.loadCart('USERID');
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler = (id) => {
@@ -142,7 +142,9 @@ class Boards extends Component {
                         singleItemName={this.state.featured.name}
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
-                        sizes={this.state.featured._id} />
+                        sizes={this.state.featured._id} 
+                        item={this.state.featured}
+                        cart={this.state.cart} />
                 </Modal>
 
             </div>

@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 import Button from '../../Components/UI/Button/button';
 import classes from './Checkout.css';
+import API from "../../utils/API";
+
 class store extends Component {
    state={
-      orderList:[]
+      orderList:{}
    }
+
    componentWillMount(){
       console.log(this.props);
    }
+
    componentDidMount(){
+
+      this.loadOrder(localStorage.getItem('user'));
       this.setState({
          orderList: this.props.orders
       })
       console.log(this.state.orderList);
    }
+
    buyItems(){
       console.log("You sucessfully bought these items");
    }
+
+   loadOrder(id){
+       API.searchOrder(id)
+          .then((res) => {
+              this.setState({
+                  orderList: res.data
+              });
+          });
+   }
+   
    render() {
 
       return (

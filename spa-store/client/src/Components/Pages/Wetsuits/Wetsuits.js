@@ -21,7 +21,7 @@ class Wetsuits extends Component {
 
     componentDidMount() {
         this.loadWetsuits();
-        this.loadCart('USERID');
+        this.loadCart(localStorage.getItem('user'));
     }
 
     modalHandler = (id) => {
@@ -42,42 +42,6 @@ class Wetsuits extends Component {
             featured: {},
             itemModal: false
         });
-    }
-
-    orderHandler = (id) => {
-        
-        if(this.state.cart.length === 0){
-
-            const toAdd = [];
-            toAdd.push(this.state.featured);
-
-            const order = {
-                user: id,
-                items: toAdd,
-                totalPrice: this.state.featured.price,
-                paid: false
-            }
-
-            API.createOrder(id, order.toString())
-               .then((res) => {
-                   this.setState({
-                       cart: res.data,
-                       itemModal: false
-                   });
-               });
-        }
-        else{
-
-            const cart = this.state.cart.items;
-            cart.push(this.state.featured);
-            API.updateOrder(id, this.state.cart.toString())
-               .then((res) => {
-                   this.setState({
-                       cart: res.data,
-                       itemModal: false
-                   });
-               });
-        }
     }
 
     loadWetsuits(){
@@ -155,8 +119,8 @@ class Wetsuits extends Component {
                         singleItemBrand={this.state.featured.brand}
                         singleItemPrice={this.state.featured.price}
                         sizes={this.state.featured.sizes} 
-                        orderHandler={this.state.featured._id}
-                        />
+                        item={this.state.featured}
+                        cart={this.state.cart} />
                 </Modal>
 
             </div>

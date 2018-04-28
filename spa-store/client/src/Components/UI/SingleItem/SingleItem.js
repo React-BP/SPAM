@@ -2,18 +2,30 @@ import React, { Component } from 'react';
 import classes from "./SingleItem.css";
 import Button from '../Button/button';
 import { Query } from 'mongoose';
+import API from '../../../utils/API';
 
 class SingleItem extends Component {
     constructor(props) {
         super(props);
             this.state = {
                 quantity: '',
-                size:''
+                size:'',
+                item: {},
+                cart: {}
             }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleRadio = this.handleRadio.bind(this);
         this.orderHandler = this.orderHandler.bind(this);
+    }
+
+    componentDidMount(){
+
+        this.setState({
+            item: this.props.item,
+            cart: this.props.cart
+        });
+
     }
     
     handleChange(event){
@@ -21,18 +33,59 @@ class SingleItem extends Component {
             quantity: event.target.value
         });
     }
+
     handleRadio(event){
 
         this.setState({
             size: event.target.value
-        })
+        });
     }
+
     orderHandler(event){
         event.preventDefault();
+        if(localStorage.getItem('user') == null){
+            return;
+        }
+        
         const price = document.querySelector(".PriceVal").textContent;
         console.log(price);
         alert(`Quantity Value: ${this.state.quantity}  Size Value: ${this.state.size} `);
+        const id = localStorage.getItem('user');
+
+        if (this.state.cart.length === 0) {
+
+            const toAdd = [];
+            toAdd.push(this.state.item);
+            const order = {
+                user: id,
+                items: toAdd,
+                totalPrice: this.state.item.price,
+                paid: false
+            }
+
+            API.createOrder(id, order.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+        else {
+
+           const cart = this.state.cart.items;
+            cart.push(this.state.item);                
+            API.updateOrder(id, this.state.cart.toString())
+                .then((res) => {
+                    this.setState({
+                        cart: res.data,
+                        itemModal: false
+                    });
+                });
+        }
+
     }
+    
     
     render() {
         const style = {

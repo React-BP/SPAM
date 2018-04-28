@@ -83,7 +83,7 @@ class Registration extends Component {
         }
         console.log(formData);
 
-        axios.post('/api/register', formData).then(response =>{
+        axios.post('/register', formData).then(response =>{
             console.log(response);
              alert("Thank you for registering with React BP. Please Login.");
              this.props.cancelModal();
