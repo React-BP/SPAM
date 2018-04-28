@@ -1,6 +1,6 @@
 {
   "name": "spam-store",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Single Page Application Boilerplate web store that utilizes mongoDB or MySql",
   "main": "index.js",
   "dependencies": {
@@ -40,6 +40,6 @@
     "url": "https://github.com/React-BP/SPA-store/issues"
   },
   "homepage": "https://github.com/React-BP/SPA-store#readme","files":[
-    "*" 
+    "/Project_3/SPAM-store/spa-store" 
   ]
 }
